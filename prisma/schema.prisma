@@ -33,8 +33,7 @@ model Category {
 
 model User {
   id String @id @default(uuid())
-  firstName String
-  lastName String
+  username String
   email String @unique
   image String?
   createdAt DateTime @default(now())
