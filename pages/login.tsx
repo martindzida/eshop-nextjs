@@ -12,7 +12,7 @@ const Login: NextPage = () => {
 
   const { register, handleSubmit, formState: {errors} } = useForm<LoginFormProps>()
 
-  const loginSubmit = (data: any) => {
+  const loginSubmit = (data: LoginFormProps) => {
     console.log(data)
   }
 
