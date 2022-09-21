@@ -13,6 +13,8 @@ datasource db {
 model Product {
   id String @id @default(uuid())
   name String @unique
+  description String?
+  image String?
   quantity Int
   price Float
   createdAt DateTime @default(now())
@@ -34,6 +36,7 @@ model User {
   firstName String
   lastName String
   email String @unique
+  image String?
   createdAt DateTime @default(now())
   updateAt DateTime @updatedAt
   orders Order[]
