@@ -20,7 +20,11 @@ const Navbar = () => {
           </Link>
         </div>
         <div className='px-2'>
-          <ShoppingCartIcon className='w-6 h-6 cursor-pointer'/>
+          <Link href='/cart'>
+            <a>
+              <ShoppingCartIcon className='w-6 h-6'/>
+            </a>
+          </Link>
         </div>
       </div>
     </div>
