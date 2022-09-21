@@ -16,8 +16,8 @@ const Home: NextPage = () => {
       <h2 className='text-4xl font-bold'>Product Items List</h2>
     </div>
     <div className='flex justify-around p-12'>
-      <ProductListItem name='Awesome product' description='Need to buy it now' quantity={2} price={100}  />
-      <ProductListItem name='Awesome product' description='Need to buy it now' quantity={2} price={100}  />
+      <ProductListItem id={0} name='Awesome product' />
+      <ProductListItem id={1} name='Awesome product' />
     </div>
     </div>
   )
