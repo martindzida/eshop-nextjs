@@ -12,15 +12,33 @@ const Product: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
-      <div className='grid'>
-        <div>
-          <h2>Crystal name</h2>
+      <div className='grid grid-cols-3 grid-rows-4 gap-10 px-16 py-20'>
+        <div className='col-span-1'>
+          <div className='bg-emerald-400 text-white p-8 m-2'>
+            <h2>Crystal image</h2>
+          </div>
+          <div className='bg-emerald-400 text-white p-8 m-2'>
+            <button className='bg-white text-emerald-400 uppercase'>Add to cart</button>
+          </div>
         </div>
-        <div>
-          <p>Crystal description</p>
+        <div className='col-span-1'>
+          <div className='bg-emerald-400 text-white p-8 m-2'>
+            <h2>Crystal name</h2>
+          </div>
+          <div className='bg-emerald-400 text-white p-8 m-2'>
+            <p>Crystal description</p>
+          </div>
+          <div className='bg-emerald-400 text-white p-8 m-2'>
+            <p>Crystal price</p>
+          </div>
+          <div className='bg-emerald-400 text-white p-8 m-2'>
+            <p>Crystal quantity</p>
+          </div>
         </div>
-        <div>
-          <button className='uppercase'>Add to cart</button>
+        <div className='col-span-1'>
+          <div className='bg-emerald-400 text-white p-8 m-2'>
+            <p>Crystal from the category/other content</p>
+          </div>
         </div>
       </div>
     </div>
