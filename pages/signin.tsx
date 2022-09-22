@@ -1,19 +1,27 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { useForm } from 'react-hook-form'
+import { useMutation } from '@tanstack/react-query'
+import axios from 'axios'
+
 
 
 interface SigninFormProps {
   username: string,
+  email: string,
   password: string
 }
 
 const Signin: NextPage = () => {
 
+  const createUser = useMutation((newUser: SigninFormProps) => {
+    return axios.post('/api/signin', newUser)
+  })
+
   const { register, handleSubmit, formState: { errors }} = useForm<SigninFormProps>()
 
   const signinSubmit = (data: SigninFormProps) => {
-    console.log(data)
+    createUser.mutate(data)
   }
 
   return (
@@ -29,13 +37,13 @@ const Signin: NextPage = () => {
         </div>
         <div className='bg-emerald-400 text-center caret-emerald-400 p-8'>
           <form onSubmit={handleSubmit(signinSubmit)}>
-            <div>
+            <div className='p-2'>
               <label htmlFor="username" className='text-white'>Username</label>
               <input {...register('username')} type="text" name='username'/>
             </div>
-            <div>
-              <label htmlFor="password" className='text-white'>Password</label>
-              <input {...register('password')}type="password" name='password'/>
+            <div className='p-2'>
+              <label htmlFor="email" className='text-white'>Email</label>
+              <input {...register('email')} type="email" name='email'/>
             </div>
             <button className='bg-white text-emerald-400 cursor-pointer uppercase text-sm font-semibold px-3 py-2 m-3'>Signin</button>
           </form>

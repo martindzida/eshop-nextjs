@@ -3,6 +3,7 @@ import Head from 'next/head'
 import Navbar from '../components/Navbar'
 import ProductListItem from '../components/ProductListItem'
 
+
 const Home: NextPage = () => {
   return (
     <div>
