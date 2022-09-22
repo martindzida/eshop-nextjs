@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Navbar from '../components/Navbar'
-import ProductListItem from '../components/ProductListItem'
+import CrystalListItem from '../components/CrystalListItem'
 import useGetCrystals from '../utils/useGetCrystals'
 
 
@@ -18,8 +18,8 @@ const Crystals: NextPage = () => {
       <h2 className='text-4xl font-bold'>Crystals List</h2>
     </div>
     <div className='flex justify-around p-12'>
-      <ProductListItem id={0} name='Cat' />
-      <ProductListItem id={1} name='Cat' />
+      <CrystalListItem id={0} name='Cat' />
+      <CrystalListItem id={1} name='Cat' />
     </div>
     </div>
   )
