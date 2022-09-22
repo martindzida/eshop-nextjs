@@ -2,9 +2,10 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Navbar from '../components/Navbar'
 import ProductListItem from '../components/ProductListItem'
+import useGetCrystals from '../utils/useGetCrystals'
 
 
-const Products: NextPage = () => {
+const Crystals: NextPage = () => {
   return (
     <div>
       <Head>
@@ -24,4 +25,4 @@ const Products: NextPage = () => {
   )
 }
 
-export default Products
+export default Crystals
