@@ -5,8 +5,17 @@ import { ShoppingCartIcon } from '@heroicons/react/24/outline'
 const Navbar = () => {
   return (
     <div className='w-full flex justify-between items-center text-emerald-400 shadow-md p-5 mx-auto'>
-      <div>
-          Store Logo
+      <div className='flex items-center'>
+        <div className='px-2'>
+            <Link href='/'>
+              <a>Crystalbase</a>
+            </Link>
+        </div>
+        <div className='px-2'>
+            <Link href='/crystals'>
+              <a>Crystals</a>
+            </Link>
+        </div>
       </div>
       <div className='flex items-center'>
         <div className='px-2'>
@@ -15,7 +24,7 @@ const Navbar = () => {
           </Link>
         </div>
         <div className='px-2'>
-          <Link href='login'>
+          <Link href='/login'>
             <a className='bg-white text-emerald-400 hover:bg-emerald-400 hover:text-white border border-emerald-400 px-2 py-1'>Login</a>
           </Link>
         </div>

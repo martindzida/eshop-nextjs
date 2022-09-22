@@ -8,7 +8,7 @@ export default async (req:NextApiRequest, res: NextApiResponse) => {
     }
     
     const { username, email } = req.body
-    const todo = await prisma.user.create({
+    const user = await prisma.user.create({
         data:{
             username: username,
             email: email,
