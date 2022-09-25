@@ -18,5 +18,5 @@ export default async (req:NextApiRequest, res: NextApiResponse) => {
             id: parseInt(id)
         }
     })
-    res.status(200).json({message: 'Success'})
+    res.status(200).json(crystal)
 }
