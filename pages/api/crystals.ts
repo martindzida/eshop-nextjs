@@ -8,5 +8,5 @@ export default async (req:NextApiRequest, res: NextApiResponse) => {
     }
 
     const crystals = await prisma.crystal.findMany()
-    res.status(200).json({message: 'Success'})
+    res.status(200).json(crystals)
 }

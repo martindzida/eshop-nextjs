@@ -20,12 +20,12 @@ const Navbar = () => {
       <div className='flex items-center'>
         <div className='px-2'>
           <Link href='/signin'>
-            <a className='bg-white text-emerald-400 hover:bg-emerald-400 hover:text-white border border-emerald-400 px-2 py-1'>Signin</a>
+            <button className='bg-white text-emerald-400 hover:bg-emerald-400 hover:text-white border border-emerald-400 px-2 py-1'>Signin</button>
           </Link>
         </div>
         <div className='px-2'>
           <Link href='/login'>
-            <a className='bg-white text-emerald-400 hover:bg-emerald-400 hover:text-white border border-emerald-400 px-2 py-1'>Login</a>
+            <button className='bg-white text-emerald-400 hover:bg-emerald-400 hover:text-white border border-emerald-400 px-2 py-1'>Login</button>
           </Link>
         </div>
         <div className='px-2'>

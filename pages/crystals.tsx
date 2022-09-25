@@ -3,9 +3,18 @@ import Head from 'next/head'
 import Navbar from '../components/Navbar'
 import CrystalListItem from '../components/CrystalListItem'
 import useGetCrystals from '../utils/useGetCrystals'
+import { Crystal } from '@prisma/client'
 
 
 const Crystals: NextPage = () => {
+  const crystals = useGetCrystals()
+  if (crystals.isLoading) {
+    return <div>Loading...</div>
+  }
+
+
+  const crystalItems = crystals.data.map((c: Crystal) => <CrystalListItem key={c.id} id={c.id} name={c.name}/>)
+
   return (
     <div>
       <Head>
@@ -18,8 +27,7 @@ const Crystals: NextPage = () => {
       <h2 className='text-4xl font-bold'>Crystals List</h2>
     </div>
     <div className='flex justify-around p-12'>
-      <CrystalListItem id={0} name='Cat' />
-      <CrystalListItem id={1} name='Cat' />
+      {crystalItems}
     </div>
     </div>
   )

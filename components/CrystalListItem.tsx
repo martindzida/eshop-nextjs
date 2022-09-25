@@ -20,7 +20,7 @@ const CrystalListItem = (props: Props) => {
         <div className='p-4 pb-6'>
           <Image src={cat} alt="Product image" />
         </div>
-        <Link href={`/products/${props.id}`}>
+        <Link href={`/crystals/${props.id}`}>
           <a className='bg-white text-emerald-400 hover:bg-gradient-to-r from-emerald-200 to-emerald-400 hover:text-white hover:shadow-lg hover:shadow-emerald-400/50 font-medium border hover:border-none border-emerald-400 p-2 uppercase'>Purchase</a>
         </Link>
     </div>

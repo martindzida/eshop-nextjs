@@ -2,6 +2,7 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import Navbar from '../../components/Navbar'
+import CrystalInfoPanel from '../../components/CrystalInfoPanel'
 
 const Product: NextPage = () => {
   return (
@@ -22,18 +23,7 @@ const Product: NextPage = () => {
           </div>
         </div>
         <div className='col-span-1'>
-          <div className='bg-emerald-400 text-white p-8 m-2'>
-            <h2>Crystal name</h2>
-          </div>
-          <div className='bg-emerald-400 text-white p-8 m-2'>
-            <p>Crystal description</p>
-          </div>
-          <div className='bg-emerald-400 text-white p-8 m-2'>
-            <p>Crystal price</p>
-          </div>
-          <div className='bg-emerald-400 text-white p-8 m-2'>
-            <p>Crystal quantity</p>
-          </div>
+          <CrystalInfoPanel name='Emerald' description='Shiny :o' price={100} quantity={3}/>
         </div>
         <div className='col-span-1'>
           <div className='bg-emerald-400 text-white p-8 m-2'>
