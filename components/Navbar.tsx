@@ -1,5 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
+import CartItemsCountBadge from './CartItemsCountBadge'
 import { ShoppingCartIcon } from '@heroicons/react/24/outline'
 
 const Navbar = () => {

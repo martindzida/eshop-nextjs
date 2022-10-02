@@ -3,17 +3,25 @@ import Head from 'next/head'
 import Navbar from '../components/Navbar'
 import CrystalListItem from '../components/CrystalListItem'
 import useGetCrystals from '../utils/useGetCrystals'
-import { Crystal } from '@prisma/client'
+import useGetCategories from '../utils/useGetCategories'
+import { Crystal} from '@prisma/client'
 
 
 const Crystals: NextPage = () => {
   const crystals = useGetCrystals()
-  if (crystals.isLoading) {
+  const categories = useGetCategories()
+
+  if (crystals.isLoading || categories.isLoading) {
     return <div>Loading...</div>
+  }
+
+  if (crystals.isError || categories.isError) {
+    return <div>Error...</div>
   }
 
 
   const crystalItems = crystals.data.map((c: Crystal) => <CrystalListItem key={c.id} id={c.id} name={c.name}/>)
+  //TODO: map categories and make a component for it
 
   return (
     <div>
@@ -24,10 +32,13 @@ const Crystals: NextPage = () => {
       </Head>
     <Navbar />
     <div className='text-emerald-400 text-center px-8 pt-12'>
-      <h2 className='text-4xl font-bold'>Crystals List</h2>
+      <h1 className='text-4xl font-bold'>Crystals List</h1>
     </div>
-    <div className='flex justify-around p-12'>
+    <div className='flex flex-col lg:flex-row justify-around p-12'>
       {crystalItems}
+    </div>
+    <div>
+      <h2>Categories</h2>
     </div>
     </div>
   )
