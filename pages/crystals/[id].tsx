@@ -3,6 +3,8 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Navbar from '../../components/Navbar'
 import CrystalInfoPanel from '../../components/CrystalInfoPanel'
+import CrystalCategoryItem from '../../components/CrystalCategoryItem'
+import cat from '../../../../Downloads/poly-cat.png'
 
 const Product: NextPage = () => {
   return (
@@ -13,23 +15,18 @@ const Product: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
-      <div className='grid grid-cols-3 grid-rows-4 gap-10 px-16 py-20'>
-        <div className='col-span-1'>
-          <div className='bg-emerald-400 text-white p-8 m-2'>
-            <h2>Crystal image</h2>
+      <div className='px-12 py-16'>
+          <div className='p-4 m-2'>
+            <Image src={cat} alt="Product image" />
           </div>
-          <div className='bg-emerald-400 text-white p-8 m-2'>
-            <button className='bg-white text-emerald-400 uppercase'>Add to cart</button>
-          </div>
-        </div>
-        <div className='col-span-1'>
           <CrystalInfoPanel name='Emerald' description='Shiny :o' price={100} quantity={3}/>
-        </div>
-        <div className='col-span-1'>
-          <div className='bg-emerald-400 text-white p-8 m-2'>
-            <p>Crystal from the category/other content</p>
+          <div className='text-center p-4 m-2'>
+            <button className='bg-white hover:bg-emerald-400 text-emerald-400 hover:text-white border border-emerald-400 hover:border-0 uppercase font-semibold p-2'>Add to cart</button>
           </div>
-        </div>
+          <div className='bg-white text-emerald-400 text-xl text-center font-bold pt-8 p-4'>
+            <h3>You may also like:</h3>
+            <CrystalCategoryItem name="Ruby" price={99}/>
+          </div>
       </div>
     </div>
   )

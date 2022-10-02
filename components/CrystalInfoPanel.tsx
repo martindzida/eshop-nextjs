@@ -12,7 +12,7 @@ const CrystalInfoPanel = (props: Props) => {
   return (
     <div className='text-left p-4'>
       <div className='bg-white text-emerald-400'>
-        <h2 className='text-xl font-bold'>{props.name}</h2>
+        <h1 className='text-4xl font-bold'>{props.name}</h1>
       </div>
       <div>
         <p>{props.description}</p>
