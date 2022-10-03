@@ -16,7 +16,7 @@ const Home: NextPage = () => {
       </Head>
       <Navbar />
       <div className='text-center px-10 py-12'>
-        <h1 className='text-4xl xs:text-5xl sm:text-6xl font-extrabold text-emerald-400'>Crystalbase</h1>
+        <h1 className='text-5xl sm:text-6xl font-extrabold text-emerald-400'>Crystalbase</h1>
       </div>
       <section>
         <div className='flex flex-col text-white items-center bg-gradient-to-b from-emerald-400 via-green-400 to-sky-400 px-10 py-20'>

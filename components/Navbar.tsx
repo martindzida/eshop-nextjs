@@ -19,24 +19,24 @@ const Navbar = () => {
             </div>
           </div>
           <div className='flex items-center'>
-            <div className='px-2 invisible sm:visible'>
+            <div className='px-2 hidden sm:block'>
               <Link href='/signin'>
                 <button className='hover:bg-emerald-400 hover:text-white border border-emerald-400 px-2 py-1'>Signin</button>
               </Link>
             </div>
-            <div className='px-2 invisible sm:visible'>
+            <div className='px-2 hidden sm:block'>
               <Link href='/login'>
                 <button className='hover:bg-emerald-400 hover:text-white border border-emerald-400 px-2 py-1'>Login</button>
               </Link>
             </div>
-            <div className='px-2 invisible sm:visible'>
+            <div className='px-2 hidden sm:block'>
               <Link href='/cart'>
                 <a>
                   <ShoppingCartIcon className='w-6 h-6'/>
                 </a>
               </Link>
             </div>
-            <div className='px-2 sm:invisible'>
+            <div className='px-2 sm:hidden'>
               <button onClick={() => {console.log('navbar dropdown')}}>
                 <Bars3Icon className='w-6 h-6'/>
               </button>

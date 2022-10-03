@@ -4,6 +4,7 @@ import Navbar from '../components/Navbar'
 import CrystalListItem from '../components/CrystalListItem'
 import useGetCrystals from '../utils/useGetCrystals'
 import useGetCategories from '../utils/useGetCategories'
+import LoadingPage from '../components/LoadingPage'
 import { Crystal} from '@prisma/client'
 
 
@@ -12,7 +13,7 @@ const Crystals: NextPage = () => {
   const categories = useGetCategories()
 
   if (crystals.isLoading || categories.isLoading) {
-    return <div>Loading...</div>
+    return <LoadingPage />
   }
 
   if (crystals.isError || categories.isError) {
