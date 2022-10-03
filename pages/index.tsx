@@ -15,12 +15,13 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
+      <div className='text-center px-10 py-12'>
+        <h1 className='text-4xl xs:text-5xl sm:text-6xl font-extrabold text-emerald-400'>Crystalbase</h1>
+      </div>
       <section>
-        <div>
-          <h1 className='text-6xl text-emerald-400'>Crystalbase</h1>
-        </div>
-        <div className='flex text-white bg-gradient-to-b from-emerald-400 via-green-400 to-sky-400 p-10'>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, voluptates!</p>
+        <div className='flex flex-col text-white items-center bg-gradient-to-b from-emerald-400 via-green-400 to-sky-400 px-10 py-20'>
+          <p className='text-xl font-bold text-center p-4'>Best virtual crystals marketplace!</p>
+          <button className='bg-white text-emerald-400 font-semibold p-2'>Show me more</button>
         </div>
       </section>
     </div>
