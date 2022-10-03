@@ -15,6 +15,14 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
+      <section>
+        <div>
+          <h1 className='text-6xl text-emerald-400'>Crystalbase</h1>
+        </div>
+        <div className='flex text-white bg-gradient-to-b from-emerald-400 via-green-400 to-sky-400 p-10'>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, voluptates!</p>
+        </div>
+      </section>
     </div>
   )
 }
