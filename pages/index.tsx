@@ -1,4 +1,5 @@
 import type { NextPage } from 'next'
+import Link from 'next/link'
 import Head from 'next/head'
 import Navbar from '../components/Navbar'
 
@@ -21,7 +22,9 @@ const Home: NextPage = () => {
       <section>
         <div className='flex flex-col text-white items-center bg-gradient-to-b from-emerald-400 via-green-400 to-sky-400 px-10 py-20'>
           <p className='text-xl font-bold text-center p-4'>Best virtual crystals marketplace!</p>
-          <button className='bg-white text-emerald-400 font-semibold p-2'>Show me more</button>
+          <Link href='/crystals'>
+            <a className='bg-white text-emerald-400 font-semibold p-2'>Show me more</a>
+          </Link>
         </div>
       </section>
     </div>

@@ -1,5 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
+import { Disclosure, Menu } from '@headlessui/react'
 import { ShoppingCartIcon, Bars3Icon } from '@heroicons/react/24/outline'
 
 const Navbar = () => {

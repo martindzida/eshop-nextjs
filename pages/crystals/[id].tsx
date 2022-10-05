@@ -1,12 +1,15 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
+import { useRouter } from 'next/router'
 import Navbar from '../../components/Navbar'
 import CrystalInfoPanel from '../../components/CrystalInfoPanel'
 import CrystalCategoryItem from '../../components/CrystalCategoryItem'
 import cat from '../../../../Downloads/poly-cat.png'
 
 const Product: NextPage = () => {
+  const router = useRouter()
+
   return (
     <div>
       <Head>
@@ -17,7 +20,7 @@ const Product: NextPage = () => {
       <Navbar />
       <div className='px-12 py-16'>
           <div className='p-4 m-2'>
-            <Image src={cat} alt="Product image" />
+            <Image src='/emerald.svg' alt="Product image" width={200} height={300} layout='responsive' />
           </div>
           <CrystalInfoPanel name='Emerald' description='Shiny :o' price={100} quantity={3}/>
           <div className='text-center p-4 m-2'>

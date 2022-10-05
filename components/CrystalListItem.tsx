@@ -7,7 +7,7 @@ import cat from '../../../Downloads/poly-cat.png'
 interface Props {
     id: number,
     name: string,
-    image?: string
+    image: string
 }
 
 
@@ -18,10 +18,10 @@ const CrystalListItem = (props: Props) => {
             <h3 className='text-emerald-400 text-xl font-bold'>{props.name}</h3>
         </div>
         <div className='p-4 pb-6'>
-          <Image src={cat} alt="Product image" />
+          <Image src={props.image} alt="Product image" width={50} height={50} />
         </div>
         <Link href={`/crystals/${props.id}`}>
-          <a className='bg-white text-emerald-400 hover:bg-gradient-to-r from-emerald-200 to-emerald-400 hover:text-white hover:shadow-lg hover:shadow-emerald-400/50 font-medium border hover:border-none border-emerald-400 p-2 uppercase'>Purchase</a>
+          <a className='bg-white text-emerald-400 hover:bg-emerald-400 hover:text-white hover:shadow-lg hover:shadow-emerald-400/50 font-medium border border-emerald-400 p-2 uppercase'>Purchase</a>
         </Link>
     </div>
   )

@@ -14,7 +14,7 @@ model Crystal {
   id Int @id @default(autoincrement())
   name String @unique
   description String?
-  image String?
+  image String
   quantity Int
   price Float
   createdAt DateTime @default(now())
