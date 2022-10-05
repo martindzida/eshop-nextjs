@@ -2,16 +2,16 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Navbar from '../components/Navbar'
 import CrystalListItem from '../components/CrystalListItem'
-import useGetCrystals from '../utils/useGetCrystals'
-import useGetCategories from '../utils/useGetCategories'
+import useGetAllCrystals from '../utils/useGetAllCrystals'
+import useGetAllCategories from '../utils/useGetAllCategories'
 import LoadingPage from '../components/LoadingPage'
 import ProgressBar from '../components/ProgressBar'
 import { Crystal} from '@prisma/client'
 
 
 const Crystals: NextPage = () => {
-  const crystals = useGetCrystals()
-  const categories = useGetCategories()
+  const crystals = useGetAllCrystals()
+  const categories = useGetAllCategories()
 
   if (crystals.isLoading || categories.isLoading) {
     return (

@@ -4,6 +4,6 @@ import axios from 'axios'
 
 const getCrystals = () => axios.get('api/crystals').then(res => res.data)
 
-const useGetCrystals = () => useQuery(['getCrystals'], getCrystals)
+const useGetAllCrystals = () => useQuery(['getCrystals'], getCrystals)
 
-export default useGetCrystals
+export default useGetAllCrystals

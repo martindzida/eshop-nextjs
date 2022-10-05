@@ -5,10 +5,16 @@ import { useRouter } from 'next/router'
 import Navbar from '../../components/Navbar'
 import CrystalInfoPanel from '../../components/CrystalInfoPanel'
 import CrystalCategoryItem from '../../components/CrystalCategoryItem'
-import cat from '../../../../Downloads/poly-cat.png'
+import useGetCrystal from '../../utils/useGetCrystal'
+import PageNotFound from '../../components/PageNotFound'
 
 const Product: NextPage = () => {
   const router = useRouter()
+  const crystalId = router.query.id
+
+  const crystal = useGetCrystal('3')
+  const {name, description, price, image, quantity} = crystal.data
+
 
   return (
     <div>
@@ -20,11 +26,11 @@ const Product: NextPage = () => {
       <Navbar />
       <div className='px-12 py-16'>
           <div className='p-4 m-2'>
-            <Image src='/emerald.svg' alt="Product image" width={200} height={300} layout='responsive' />
+            <Image src={image} alt={name} width={200} height={300} layout='responsive' />
           </div>
-          <CrystalInfoPanel name='Emerald' description='Shiny :o' price={100} quantity={3}/>
+          <CrystalInfoPanel name={name} description={description} price={price} quantity={quantity}/>
           <div className='text-center p-4 m-2'>
-            <button className='bg-white hover:bg-emerald-400 text-emerald-400 hover:text-white border border-emerald-400 hover:border-0 uppercase font-semibold p-2'>Add to cart</button>
+            <button className='bg-white hover:bg-emerald-400 text-emerald-400 hover:text-white border border-emerald-400 uppercase font-semibold p-2'>Add to cart</button>
           </div>
           <div className='bg-white text-emerald-400 text-xl text-center font-bold pt-8 p-4'>
             <h3>You may also like:</h3>

@@ -4,6 +4,6 @@ import axios from 'axios'
 
 const getCategories = () => axios.get('api/categories').then(res => res.data)
 
-const useGetCategories = () => useQuery(['getCategories'], getCategories)
+const useGetAllCategories = () => useQuery(['getCategories'], getCategories)
 
-export default useGetCategories
+export default useGetAllCategories

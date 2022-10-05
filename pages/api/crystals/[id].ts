@@ -9,7 +9,7 @@ export default async (req:NextApiRequest, res: NextApiResponse) => {
 
     const { id } = req.query
 
-    if (typeof id !== "string") {
+    if (typeof id !== 'string') {
         return res.status(404)
     }
     
