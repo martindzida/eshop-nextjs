@@ -34,8 +34,8 @@ const Signup: NextPage = () => {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <Navbar />
-      <div className='flex flex-col items-center text-center bg-emerald-400 rounded-lg p-16 m-8'>
-        <form onSubmit={handleSubmit(signinSubmit)}>
+      <div className='text-center bg-emerald-400 rounded-lg p-16 m-8'>
+        <form onSubmit={handleSubmit(signinSubmit)} className='flex flex-col items-center'>
           <input
             {...register('username', {required: true, maxLength: 20})}
             type='text'
