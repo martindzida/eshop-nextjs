@@ -21,6 +21,7 @@ const Signup: NextPage = () => {
   const {
     register,
     handleSubmit,
+    getValues,
     formState: {errors},
   } = useForm<SigninFormProps>();
 
@@ -28,6 +29,7 @@ const Signup: NextPage = () => {
     createUser.mutate(data);
   };
 
+  console.log(errors);
   return (
     <div>
       <Head>
@@ -39,7 +41,7 @@ const Signup: NextPage = () => {
       <div className='text-center bg-emerald-400 rounded-lg p-16 m-8'>
         <form onSubmit={handleSubmit(signupSubmit)} className='flex flex-col items-center'>
           <input
-            {...register('username', {required: 'Username is required', maxLength: 20})}
+            {...register('username', {required: 'Username is required'})}
             type='text'
             name='username'
             placeholder='Username'
@@ -63,14 +65,21 @@ const Signup: NextPage = () => {
           />
           <InputErrorMessage error={errors.password?.message} />
           <input
-            {...register('confirmPassword', {required: 'Confirmation is required', minLength: 8})}
+            {...register('confirmPassword', {
+              required: 'Confirmation is required',
+              minLength: 8,
+              validate: (value: string) => {
+                const {password} = getValues();
+                return value === password || 'Passwords do not match';
+              },
+            })}
             type='password'
             name='confirmPassword'
             placeholder='Confirm password'
             className='rounded-2xl p-2 my-2'
           />
           <InputErrorMessage error={errors.confirmPassword?.message} />
-          <input type='submit' value='Sign up' className='text-white bg-emerald-200 cursor-pointer font-bold text-sm rounded-lg px-8 py-2 mt-8' />
+          <input type='submit' value='Sign up' className='text-white bg-emerald-300 cursor-pointer font-bold text-sm rounded-lg px-8 py-2 mt-8' />
         </form>
       </div>
     </div>

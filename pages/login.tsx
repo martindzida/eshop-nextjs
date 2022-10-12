@@ -2,6 +2,7 @@ import type {NextPage} from 'next';
 import Head from 'next/head';
 import {useForm} from 'react-hook-form';
 import Navbar from '../components/Navbar';
+import InputErrorMessage from '../components/InputErrorMessage';
 
 interface LoginFormProps {
   username: string;
@@ -27,17 +28,25 @@ const Login: NextPage = () => {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <Navbar />
-      <div className='flex flex-col items-center text-center bg-emerald-400 rounded-lg p-16 m-8'>
-        <form onSubmit={handleSubmit(loginSubmit)}>
-          <input {...register('username', {required: true})} type='text' name='username' placeholder='Username' className='rounded-2xl p-2 my-2' />
+      <div className='text-center bg-emerald-400 rounded-lg p-16 m-8'>
+        <form onSubmit={handleSubmit(loginSubmit)} className='flex flex-col items-center '>
           <input
-            {...register('password', {required: true})}
+            {...register('username', {required: 'Username is required'})}
+            type='text'
+            name='username'
+            placeholder='Username'
+            className='rounded-2xl p-2 my-2'
+          />
+          <InputErrorMessage error={errors.username?.message} />
+          <input
+            {...register('password', {required: 'Password is required'})}
             type='password'
             name='password'
             placeholder='Password'
             className='rounded-2xl p-2 my-2'
           />
-          <button className='text-white bg-emerald-300 cursor-pointer font-bold text-sm rounded-lg px-8 py-2 mt-8'>Login</button>
+          <InputErrorMessage error={errors.password?.message} />
+          <input type='submit' value='Login' className='text-white bg-emerald-300 cursor-pointer font-bold text-sm rounded-lg px-8 py-2 mt-8' />
         </form>
       </div>
     </div>
