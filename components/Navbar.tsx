@@ -5,11 +5,11 @@ import {ShoppingCartIcon, Bars3Icon} from '@heroicons/react/24/outline';
 const Navbar = () => {
   return (
     <nav className='w-full shadow-md p-5 mx-auto'>
-      <div className='flex justify-between items-center text-emerald-400 font-medium'>
+      <div className='flex justify-between items-center text-emerald-400 font-semibold'>
         <div className='flex items-center'>
           <div className='px-2'>
             <Link href='/'>
-              <a>Crystalbase</a>
+              <a>Logo</a>
             </Link>
           </div>
           <div className='px-2 invisible sm:visible'>
@@ -21,12 +21,12 @@ const Navbar = () => {
         <div className='flex items-center'>
           <div className='px-2 hidden sm:block'>
             <Link href='/signup'>
-              <button className='hover:bg-emerald-400 hover:text-white border border-emerald-400 px-2 py-1'>Sign up</button>
+              <button className='hover:bg-emerald-400 hover:text-white border border-emerald-400 rounded-lg px-4 py-2'>Sign up</button>
             </Link>
           </div>
           <div className='px-2 hidden sm:block'>
             <Link href='/login'>
-              <button className='hover:bg-emerald-400 hover:text-white border border-emerald-400 px-2 py-1'>Log in</button>
+              <button className='hover:bg-emerald-400 hover:text-white border border-emerald-400 rounded-lg px-4 py-2'>Log in</button>
             </Link>
           </div>
           <div className='px-2 hidden sm:block'>
