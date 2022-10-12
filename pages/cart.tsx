@@ -1,6 +1,7 @@
 import type {NextPage} from 'next';
 import Head from 'next/head';
 import Navbar from '../components/Navbar';
+import CartItem from '../components/CartItem';
 
 const Cart: NextPage = () => {
   return (
@@ -11,24 +12,19 @@ const Cart: NextPage = () => {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <Navbar />
-      <div className='flex flex-col items-center'>
-        <div className='text-center px-8 py-12'>
-          <h1 className='text-emerald-400 text-4xl font-bold'>Your shopping cart</h1>
-        </div>
-        <section>
-          <div className='border border-emerald-400 p-8 my-4'>Cart content</div>
-        </section>
-        <section>
-          <div className='border border-emerald-400 p-8 my-4'>Total price</div>
-        </section>
-        <div className='flex justify-around p-4'>
-          <button className='bg-white text-emerald-400 hover:bg-emerald-400 hover:text-white hover:shadow-lg hover:shadow-emerald-400/50 font-medium border border-emerald-400 p-2 m-2 uppercase'>
-            Cancel
-          </button>
-          <button className='bg-white text-emerald-400 hover:bg-emerald-400 hover:text-white hover:shadow-lg hover:shadow-emerald-400/50 font-medium border border-emerald-400 p-2 m-2 uppercase'>
-            Purchase
-          </button>
-        </div>
+      <div className='text-center px-8 py-12'>
+        <h1 className='text-emerald-400 text-4xl font-bold'>Your shopping cart</h1>
+      </div>
+      <section className='flex flex-col items-center'>
+        <CartItem id={0} name='Emerald' image='/emerald.svg' quantity={3} price={1000} />
+        <CartItem id={1} name='Diamond' image='/diamond.svg' quantity={1} price={1200} />
+      </section>
+      <section>
+        <div className='border border-emerald-400 p-8 my-4'>Total price</div>
+      </section>
+      <div className='flex justify-around p-4'>
+        <button className='bg-emerald-300 text-white text-lg font-semibold rounded-lg p-2 m-2'>Cancel</button>
+        <button className='text-emerald-300 bg-white text-lg font-semibold border border-emerald-300 rounded-lg p-2 m-2'>Purchase</button>
       </div>
     </div>
   );
