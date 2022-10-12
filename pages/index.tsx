@@ -23,7 +23,7 @@ const Home: NextPage = () => {
         <div className='flex flex-col text-white items-center font-bold bg-gradient-to-b from-emerald-400 via-green-400 to-sky-400 px-10 py-20'>
           <p className='text-3xl font-bold text-center p-10'>Best virtual crystals marketplace!</p>
           <Link href='/crystals'>
-            <a className='bg-white text-emerald-400 text-xl font-bold rounded-lg p-3 transition ease-in-out duration-300 hover:translate-y-3 hover:bg-indigo-400 hover:text-white'>
+            <a className='bg-white text-emerald-400 text-xl font-bold rounded-lg p-3 transition ease-in-out duration-300 hover:translate-y-3 hover:bg-indigo-400 hover:text-white hover:scale-105'>
               Show me more
             </a>
           </Link>

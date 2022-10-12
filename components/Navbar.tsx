@@ -32,7 +32,7 @@ const Navbar = () => {
           <div className='px-2 hidden sm:block'>
             <Link href='/cart'>
               <a>
-                <ShoppingCartIcon className='w-6 h-6' />
+                <ShoppingCartIcon className='w-8 h-8' />
               </a>
             </Link>
           </div>
@@ -42,7 +42,7 @@ const Navbar = () => {
                 console.log('navbar dropdown');
               }}
             >
-              <Bars3Icon className='w-6 h-6' />
+              <Bars3Icon className='w-8 h-8' />
             </button>
           </div>
         </div>
