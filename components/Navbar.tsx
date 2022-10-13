@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import {ShoppingCartIcon, Bars3Icon} from '@heroicons/react/24/outline';
+import CartItemsCountBadge from './CartItemsCountBadge';
 
 const Navbar = () => {
   return (
@@ -31,7 +32,8 @@ const Navbar = () => {
           </div>
           <div className='px-2 hidden sm:block'>
             <Link href='/cart'>
-              <a>
+              <a className='relative'>
+                <CartItemsCountBadge count={2} />
                 <ShoppingCartIcon className='w-8 h-8' />
               </a>
             </Link>
