@@ -2,8 +2,28 @@ import type {NextPage} from 'next';
 import Head from 'next/head';
 import Navbar from '../components/Navbar';
 import CartItem from '../components/CartItem';
+import {useState} from 'react';
+
+interface Order {
+  id: number;
+  name: string;
+  image: string;
+  quantity: number;
+  price: number;
+}
 
 const Cart: NextPage = () => {
+  const [data, setData] = useState<Order[]>([
+    {id: 0, name: 'Emerald', image: '/emerald.svg', quantity: 3, price: 1000},
+    {id: 1, name: 'Diamond', image: '/diamond.svg', quantity: 1, price: 1200},
+    {id: 2, name: 'Sapphire', image: '/sapphire.svg', quantity: 2, price: 1100},
+  ]);
+
+  const totalPrice = data.map((item: Order) => item.quantity * item.price).reduce((total, current) => total + current, 0);
+  const handleRemoveItem = (id: number) => {
+    setData(data.filter(item => item.id !== id));
+  };
+
   return (
     <div>
       <Head>
@@ -12,19 +32,30 @@ const Cart: NextPage = () => {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <Navbar />
-      <div className='text-center px-8 py-12'>
-        <h1 className='text-emerald-400 text-4xl font-bold'>Your shopping cart</h1>
+      <div className='text-center px-10 py-16'>
+        <h1 className='text-emerald-400 text-5xl font-extrabold'>Your shopping cart</h1>
       </div>
       <section className='flex flex-col items-center'>
-        <CartItem id={0} name='Emerald' image='/emerald.svg' quantity={3} price={1000} />
-        <CartItem id={1} name='Diamond' image='/diamond.svg' quantity={1} price={1200} />
+        {data.map(item => (
+          <CartItem
+            key={item.id}
+            id={item.id}
+            name={item.name}
+            image={item.image}
+            quantity={item.quantity}
+            price={item.price}
+            removeItem={handleRemoveItem}
+          />
+        ))}
       </section>
-      <section>
-        <div className='border border-emerald-400 p-8 my-4'>Total price</div>
+      <section className='flex justify-center'>
+        <div className='w-2/3 text-right text-white font-semibold text-xl rounded-lg bg-emerald-300 p-8 my-4'>
+          Total price: <span className='text-2xl'>{totalPrice} €</span>
+        </div>
       </section>
-      <div className='flex justify-around p-4'>
-        <button className='bg-emerald-300 text-white text-lg font-semibold rounded-lg p-2 m-2'>Cancel</button>
-        <button className='text-emerald-300 bg-white text-lg font-semibold border border-emerald-300 rounded-lg p-2 m-2'>Purchase</button>
+      <div className='flex justify-center p-4'>
+        <button className='text-emerald-300 bg-white text-lg font-semibold border border-emerald-300 rounded-lg p-2 m-2'>Cancel</button>
+        <button className='bg-emerald-300 text-white text-lg font-semibold rounded-lg p-2 m-2'>Purchase</button>
       </div>
     </div>
   );
