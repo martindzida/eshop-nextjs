@@ -1,6 +1,10 @@
 import type {NextPage} from 'next';
 import Head from 'next/head';
 import Navbar from '../components/Navbar';
+import OrderItem from '../components/OrderItem';
+import useGetUserOrders from '../utils/useGetUserOrders';
+import LoadingPage from '../components/LoadingPage';
+import {Order} from '@prisma/client';
 
 const Orders: NextPage = () => {
   return (
