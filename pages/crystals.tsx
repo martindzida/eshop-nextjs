@@ -6,7 +6,7 @@ import LoadingPage from '../components/LoadingPage';
 import {Crystal} from '@prisma/client';
 import {prisma} from '../lib/prisma';
 
-const Crystals: NextPage = ({data}: any) => {
+const Crystals: NextPage = ({crystals}: any) => {
   return (
     <div>
       <Head>
@@ -19,7 +19,7 @@ const Crystals: NextPage = ({data}: any) => {
         <h1 className='text-5xl font-extrabold'>Crystals List</h1>
       </div>
       <div className='flex flex-col lg:flex-row justify-around gap-10 p-12 my-8'>
-        {data.map((crystal: Crystal) => (
+        {crystals.map((crystal: Crystal) => (
           <CrystalListItem key={crystal.id} id={crystal.id} name={crystal.name} image={crystal.image} />
         ))}
       </div>
@@ -33,8 +33,8 @@ const Crystals: NextPage = ({data}: any) => {
 export default Crystals;
 
 export const getStaticProps = async () => {
-  let data = await prisma.crystal.findMany();
-  data = JSON.parse(JSON.stringify(data));
-  return {props: {data}};
+  const data = await prisma.crystal.findMany();
+  const crystals = JSON.parse(JSON.stringify(data));
+  return {props: {crystals}};
 };
 

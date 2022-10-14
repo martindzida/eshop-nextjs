@@ -7,7 +7,9 @@ import CrystalCategoryItem from '../../components/CrystalCategoryItem';
 import LoadingPage from '../../components/LoadingPage';
 import {prisma} from '../../lib/prisma';
 
-const Product: NextPage = ({data}: any) => {
+const Product: NextPage = (props: any) => {
+  console.log(`🚀 ~ file: [id].tsx ~ line 11 ~ data`, props);
+
   return (
     <div>
       <Head>
@@ -17,8 +19,8 @@ const Product: NextPage = ({data}: any) => {
       </Head>
       <Navbar />
       <div className='px-12 py-16'>
-        <Image src={data.image} alt={data.name} width={100} height={100} layout='responsive' />
-        <CrystalInfoPanel name={data.name} description={data.description} price={data.price} quantity={data.quantity} />
+        <Image src={props.image} alt={props.name} width={100} height={100} layout='responsive' />
+        <CrystalInfoPanel name={props.name} description={props.description} price={props.price} quantity={props.quantity} />
         <div className='text-center p-4 m-2'>
           <button className='bg-white hover:bg-emerald-400 text-emerald-400 hover:text-white border border-emerald-400 uppercase font-semibold p-2'>
             Add to cart
@@ -36,19 +38,19 @@ const Product: NextPage = ({data}: any) => {
 export default Product;
 
 export const getStaticProps = async ({params}: any) => {
-  let data = await prisma.crystal.findUnique({
+  const data = await prisma.crystal.findUnique({
     where: {
       id: parseInt(params.id),
     },
   });
-  data = JSON.parse(JSON.stringify(data));
-  return {props: data};
+  const crystal = JSON.parse(JSON.stringify(data));
+  return {props: crystal};
 };
 
 export const getStaticPaths = async () => {
-  let data = await prisma.crystal.findMany();
-  data = JSON.parse(JSON.stringify(data));
-  const paths = data.map((crystal: any) => {
+  const data = await prisma.crystal.findMany();
+  const crystals = JSON.parse(JSON.stringify(data));
+  const paths = crystals.map((crystal: any) => {
     return {params: {id: crystal.id.toString()}};
   });
   return {paths, fallback: false};
