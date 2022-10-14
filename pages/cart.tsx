@@ -50,12 +50,16 @@ const Cart: NextPage = () => {
       </section>
       <section className='flex justify-center'>
         <div className='w-2/3 text-right text-white font-semibold text-xl rounded-lg bg-emerald-300 p-8 my-4'>
-          Total price: <span className='text-2xl'>{totalPrice} €</span>
+          Total price: <span className='text-2xl px-10'>{totalPrice} €</span>
         </div>
       </section>
       <div className='flex justify-center p-4'>
-        <button className='text-emerald-300 bg-white text-lg font-semibold border border-emerald-300 rounded-lg p-2 m-2'>Cancel</button>
-        <button className='bg-emerald-300 text-white text-lg font-semibold rounded-lg p-2 m-2'>Purchase</button>
+        <button className='text-emerald-300 bg-white text-lg font-semibold border border-emerald-300 transition ease-in-out duration-200 hover:bg-slate-50 rounded-lg p-2 m-2'>
+          Cancel
+        </button>
+        <button className='bg-emerald-300 text-white text-lg font-semibold transition ease-in-out duration-200 hover:bg-emerald-400 rounded-lg p-2 m-2'>
+          Purchase
+        </button>
       </div>
     </div>
   );

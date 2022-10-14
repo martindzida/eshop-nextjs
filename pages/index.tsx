@@ -4,8 +4,6 @@ import Head from 'next/head';
 import Navbar from '../components/Navbar';
 
 const Home: NextPage = () => {
-  //fColor palette: !emerald-400, green-400, sky-400
-
   return (
     <div>
       <Head>
@@ -15,18 +13,28 @@ const Home: NextPage = () => {
       </Head>
       <Navbar />
       <div className='text-center px-10 py-20'>
-        <h1 className='text-5xl sm:text-6xl text-transparent font-extrabold bg-clip-text bg-gradient-to-r from-emerald-400 via-green-400 to-sky-400 p-2'>
-          Crystalbase
-        </h1>
+        <h1 className='text-5xl sm:text-6xl lg:text-7xl text-emerald-400 font-extrabold p-12'>Crystalbase</h1>
       </div>
       <section>
-        <div className='flex flex-col text-white items-center font-bold bg-gradient-to-b from-emerald-400 via-green-400 to-sky-400 px-10 py-20'>
-          <p className='text-3xl font-bold text-center p-10'>Best virtual crystals marketplace!</p>
-          <Link href='/crystals'>
-            <a className='bg-white text-emerald-400 text-xl font-bold rounded-lg p-3 transition ease-in-out duration-300 hover:translate-y-3 hover:bg-indigo-400 hover:text-white hover:scale-105'>
-              Show me more
-            </a>
-          </Link>
+        <div className='flex flex-col items-center font-bold text-white bg-gradient-to-b from-emerald-400 via-green-400 to-sky-400 px-10 py-24'>
+          <h2 className='text-2xl sm:text-3xl lg:text-4xl font-bold text-center p-10'>Best Virtual Crystals Marketplace</h2>
+          <p className='text-xl text-center'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, necessitatibus.</p>
+          <div className='p-14'>
+            <Link href='/crystals'>
+              <a className='bg-white text-emerald-400 text-xl font-bold rounded-lg p-3 transition ease-in-out duration-300 hover:scale-105 hover:bg-indigo-400 hover:text-white'>
+                Show me more
+              </a>
+            </Link>
+          </div>
+        </div>
+      </section>
+      <section>
+        <div className='text-emerald-400 text-xl font-bold p-20 text-center'>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente quisquam accusamus eligendi unde harum facere dicta deleniti tenetur,
+            omnis dolorem repellendus sunt ex rem, molestias officiis voluptatem nam, magni aperiam saepe numquam ducimus itaque. Laboriosam
+            distinctio quod iusto, nobis itaque deserunt et quisquam aperiam in officiis ad impedit repellendus earum!
+          </p>
         </div>
       </section>
     </div>
