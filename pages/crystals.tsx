@@ -2,33 +2,11 @@ import type {NextPage} from 'next';
 import Head from 'next/head';
 import Navbar from '../components/Navbar';
 import CrystalListItem from '../components/CrystalListItem';
-import useGetAllCrystals from '../utils/useGetAllCrystals';
-import useGetAllCategories from '../utils/useGetAllCategories';
 import LoadingPage from '../components/LoadingPage';
 import {Crystal} from '@prisma/client';
+import {prisma} from '../lib/prisma';
 
-const Crystals: NextPage = () => {
-  const crystals = useGetAllCrystals();
-  const categories = useGetAllCategories();
-
-  if (crystals.isLoading || categories.isLoading) {
-    return (
-      <>
-        <Navbar />
-        <LoadingPage />
-      </>
-    );
-  }
-
-  if (crystals.isError || categories.isError) {
-    return <div>Error...</div>;
-  }
-
-  const crystalItems = crystals.data.map((crystal: Crystal) => (
-    <CrystalListItem key={crystal.id} id={crystal.id} name={crystal.name} image={crystal.image} />
-  ));
-  //TODO: map categories and make a component for it
-
+const Crystals: NextPage = ({data}: any) => {
   return (
     <div>
       <Head>
@@ -37,10 +15,14 @@ const Crystals: NextPage = () => {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <Navbar />
-      <div className='text-emerald-400 text-center px-8 pt-12'>
-        <h1 className='text-4xl font-bold'>Crystals List</h1>
+      <div className='text-emerald-400 text-center px-12 pt-16'>
+        <h1 className='text-5xl font-extrabold'>Crystals List</h1>
       </div>
-      <div className='flex flex-col lg:flex-row justify-around p-12'>{crystalItems}</div>
+      <div className='flex flex-col lg:flex-row justify-around gap-10 p-12 my-8'>
+        {data.map((crystal: Crystal) => (
+          <CrystalListItem key={crystal.id} id={crystal.id} name={crystal.name} image={crystal.image} />
+        ))}
+      </div>
       <div className='text-emerald-400 text-center p-10'>
         <h2 className='text-4xl font-bold text-center'>Categories</h2>
       </div>
@@ -49,4 +31,10 @@ const Crystals: NextPage = () => {
 };
 
 export default Crystals;
+
+export const getStaticProps = async () => {
+  let data = await prisma.crystal.findMany();
+  data = JSON.parse(JSON.stringify(data));
+  return {props: {data}};
+};
 

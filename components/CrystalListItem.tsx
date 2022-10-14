@@ -10,15 +10,15 @@ interface Props {
 
 const CrystalListItem = ({id, name, image}: Props) => {
   return (
-    <div className='flex flex-col items-center text-center border border-emerald-400 p-8 mx-4 my-4'>
+    <div className='flex flex-col items-center text-center border border-emerald-400 w-1/4 p-8'>
       <div className='p-4'>
-        <h3 className='text-emerald-400 text-xl font-bold'>{name}</h3>
+        <h3 className='text-emerald-400 text-3xl font-bold'>{name}</h3>
       </div>
-      <div className='p-4 pb-6'>
-        <Image src={image} alt='Product image' width={50} height={50} />
+      <div className='p-8 pb-10'>
+        <Image src={image} alt='Product image' width={80} height={80} />
       </div>
       <Link href={`/crystals/${id}`}>
-        <a className='bg-white text-emerald-400 hover:bg-emerald-400 hover:text-white hover:shadow-lg hover:shadow-emerald-400/50 font-medium border border-emerald-400 p-2 uppercase'>
+        <a className='text-white bg-emerald-300 text-lg hover:bg-emerald-400 hover:-translate-y-1 hover:shadow-lg hover:shadow-emerald-400/50 transition ease-in-out duration-200 rounded-lg font-medium p-3'>
           Purchase
         </a>
       </Link>
@@ -27,3 +27,4 @@ const CrystalListItem = ({id, name, image}: Props) => {
 };
 
 export default CrystalListItem;
+

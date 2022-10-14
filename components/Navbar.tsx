@@ -22,12 +22,16 @@ const Navbar = () => {
         <div className='flex items-center'>
           <div className='px-2 hidden sm:block'>
             <Link href='/signup'>
-              <button className='hover:bg-emerald-400 hover:text-white border border-emerald-400 rounded-lg px-4 py-2'>Sign up</button>
+              <button className='transition ease-in-out duration-200 hover:bg-emerald-400 hover:text-white border border-emerald-400 rounded-lg px-4 py-2'>
+                Sign up
+              </button>
             </Link>
           </div>
           <div className='px-2 hidden sm:block'>
             <Link href='/login'>
-              <button className='hover:bg-emerald-400 hover:text-white border border-emerald-400 rounded-lg px-4 py-2'>Log in</button>
+              <button className='transition ease-in-out duration-200 hover:bg-emerald-400 hover:text-white border border-emerald-400 rounded-lg px-4 py-2'>
+                Log in
+              </button>
             </Link>
           </div>
           <div className='px-2 hidden sm:block'>
