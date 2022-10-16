@@ -2,7 +2,6 @@ import type {NextPage} from 'next';
 import Link from 'next/link';
 import Head from 'next/head';
 import Navbar from '../components/Navbar';
-import AuthTest from '../components/AuthTest';
 
 const Home: NextPage = () => {
   return (
@@ -38,7 +37,6 @@ const Home: NextPage = () => {
           </p>
         </div>
       </section>
-      <AuthTest />
     </div>
   );
 };
