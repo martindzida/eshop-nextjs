@@ -2,6 +2,7 @@ import type {NextPage} from 'next';
 import Link from 'next/link';
 import Head from 'next/head';
 import Navbar from '../components/Navbar';
+import AuthTest from '../components/AuthTest';
 
 const Home: NextPage = () => {
   return (
@@ -17,11 +18,11 @@ const Home: NextPage = () => {
       </div>
       <section>
         <div className='flex flex-col items-center font-bold text-white bg-gradient-to-b from-emerald-400 via-green-400 to-sky-400 px-10 py-24'>
-          <h2 className='text-2xl sm:text-3xl lg:text-4xl font-bold text-center p-10'>Best Virtual Crystals Marketplace</h2>
+          <h2 className='text-2xl sm:text-3xl lg:text-4xl font-extrabold text-center p-10'>Best Virtual Crystals Marketplace</h2>
           <p className='text-xl text-center'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, necessitatibus.</p>
           <div className='p-14'>
             <Link href='/crystals'>
-              <a className='bg-white text-emerald-400 text-xl font-bold rounded-lg p-3 transition ease-in-out duration-300 hover:scale-105 hover:bg-indigo-400 hover:text-white'>
+              <a className='inline-block bg-white text-emerald-400 text-xl font-bold rounded-lg p-3 transition ease-in-out duration-300 hover:scale-105 hover:bg-indigo-400 hover:text-white'>
                 Show me more
               </a>
             </Link>
@@ -37,6 +38,7 @@ const Home: NextPage = () => {
           </p>
         </div>
       </section>
+      <AuthTest />
     </div>
   );
 };

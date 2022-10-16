@@ -7,13 +7,13 @@ const Navbar = () => {
   return (
     <nav className='w-full shadow-md p-5 mx-auto'>
       <div className='flex justify-between items-center text-emerald-400 font-semibold'>
-        <div className='flex items-center'>
-          <div className='px-2'>
+        <div className='flex gap-6 items-center'>
+          <div className='p-2 text-lg'>
             <Link href='/'>
               <a>Logo</a>
             </Link>
           </div>
-          <div className='px-2 invisible sm:visible'>
+          <div className='p-2 invisible sm:visible text-lg'>
             <Link href='/crystals'>
               <a>Crystals</a>
             </Link>
