@@ -64,7 +64,7 @@ model Crystal {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   categories Category[]
-  orders CrystalsOnOrders[]
+  orders CrystalsOnTransactions[]
 }
 
 model Category {
@@ -75,20 +75,20 @@ model Category {
   products Crystal[]
 }
 
-model Order {
+model Transaction {
   id String @id @default(uuid())
   userId String
   createdAt DateTime @default(now())
-  products CrystalsOnOrders[]
+  products CrystalsOnTransactions[]
 }
 
-model CrystalsOnOrders {
+model CrystalsOnTransactions {
   crystal Crystal @relation(fields: [crystalId], references: [id])
   crystalId Int
-  order Order @relation(fields: [orderId], references: [id])
-  orderId String
+  transaction Transaction @relation(fields: [transactionId], references: [id])
+  transactionId String
   totalPrice Float
-  @@id([crystalId, orderId])
+  @@id([crystalId, transactionId])
 }
 
 

@@ -2,14 +2,22 @@ import React from 'react';
 import Link from 'next/link';
 import {ShoppingCartIcon, Bars3Icon} from '@heroicons/react/24/outline';
 import CartItemsCountBadge from './CartItemsCountBadge';
-import {useSession, signOut} from 'next-auth/react';
+import {useSession, signIn, signOut} from 'next-auth/react';
 import {Menu} from '@headlessui/react';
 import Image from 'next/image';
+import {useRouter} from 'next/router';
 
 const Navbar = () => {
   const {data: session, status} = useSession();
+  const router = useRouter();
+
+  const handleSignOut = () => {
+    signOut();
+    router.push('/');
+  };
+
   return (
-    <nav className='w-full shadow-md p-5 mx-auto'>
+    <nav className='w-full shadow-md px-6 py-4 mx-auto'>
       <div className='flex justify-between items-center text-emerald-400 font-semibold'>
         <div className='flex gap-6 items-center'>
           <div className='p-2 text-lg'>
@@ -29,18 +37,12 @@ const Navbar = () => {
           {status !== 'authenticated' && (
             <>
               <div className='px-2 hidden sm:block'>
-                <Link href='/signup'>
-                  <button className='transition ease-in-out duration-200 hover:bg-emerald-400 hover:text-white border border-emerald-400 rounded-lg px-4 py-2'>
-                    Sign up
-                  </button>
-                </Link>
-              </div>
-              <div className='px-2 hidden sm:block'>
-                <Link href='/signin'>
-                  <button className='transition ease-in-out duration-200 hover:bg-emerald-400 hover:text-white border border-emerald-400 rounded-lg px-4 py-2'>
-                    Sign in
-                  </button>
-                </Link>
+                <button
+                  onClick={() => signIn()}
+                  className='transition ease-in-out duration-200 hover:bg-emerald-400 hover:text-white border border-emerald-400 rounded-lg px-4 py-2'
+                >
+                  Sign in
+                </button>
               </div>
             </>
           )}
@@ -57,7 +59,7 @@ const Navbar = () => {
               <Menu as='div' className='relative ml-3'>
                 <div>
                   <Menu.Button className='flex rounded-full'>
-                    {session.user?.image && <Image src={session.user?.image} alt='avatar' width={32} height={32} className='rounded-full' />}
+                    {session.user?.image && <Image src={session.user?.image} alt='avatar' width={40} height={40} className='rounded-full' />}
                   </Menu.Button>
                 </div>
                 <Menu.Items className='absolute right-0 z-10 mt-2 w-48 origin-top-right text-center rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'>
@@ -70,7 +72,7 @@ const Navbar = () => {
                   </Menu.Item>
                   <Menu.Item>
                     {({active}) => (
-                      <a onClick={() => signOut()} className={'text-emerald-400 cursor-pointer block px-4 py-2 text-sm bg-white'}>
+                      <a onClick={handleSignOut} className={'text-emerald-400 cursor-pointer block px-4 py-2 text-sm bg-white'}>
                         Sign out
                       </a>
                     )}
