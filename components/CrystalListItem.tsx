@@ -10,7 +10,7 @@ interface Props {
 
 const CrystalListItem = ({id, name, image}: Props) => {
   return (
-    <div className='flex flex-col items-center text-center border border-emerald-400 w-1/4 p-8'>
+    <div className='flex flex-col items-center text-center border border-emerald-400 p-8'>
       <div className='p-4'>
         <h3 className='text-emerald-400 text-3xl font-bold'>{name}</h3>
       </div>

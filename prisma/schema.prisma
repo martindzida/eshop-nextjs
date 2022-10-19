@@ -91,4 +91,3 @@ model CrystalsOnTransactions {
   @@id([crystalId, transactionId])
 }
 
-

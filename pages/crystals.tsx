@@ -18,7 +18,7 @@ const Crystals: NextPage = ({crystals}: any) => {
       <div className='text-emerald-400 text-center px-12 pt-16'>
         <h1 className='text-5xl font-extrabold'>Crystals List</h1>
       </div>
-      <div className='flex flex-col lg:flex-row justify-around gap-10 p-12 my-8'>
+      <div className='grid grid-cols-4 justify-around gap-8 p-12 my-8'>
         {crystals.map((crystal: Crystal) => (
           <CrystalListItem key={crystal.id} id={crystal.id} name={crystal.name} image={crystal.image} />
         ))}

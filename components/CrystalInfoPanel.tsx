@@ -1,27 +1,34 @@
 import React from 'react';
+import Image from 'next/image';
 
 interface Props {
   name: string;
-  description?: string;
+  image: string;
+  description: string;
   price: number;
   quantity: number;
 }
 
-const CrystalInfoPanel = ({name, description, price, quantity}: Props) => {
+const CrystalInfoPanel = ({name, image, description, price, quantity}: Props) => {
   return (
-    <div className='text-center p-4'>
-      <div className='bg-white text-emerald-400 p-8'>
-        <h1 className='text-4xl font-bold'>{name}</h1>
+    <div className='flex items-center gap-16 p-20'>
+      <div className='flex flex-col items-center p-10'>
+        <h1 className='font-extrabold text-5xl p-8 text-emerald-400'>{name}</h1>
+        <Image src={image} alt={name} width={200} height={200} />
       </div>
-      <div>
-        <p className='font-mono text-emerald-400'>{description}</p>
-      </div>
-      <div className='p-4'>
-        <div className='text-emerald-400 text-lg font-semibold p-2'>
-          <span>{price} €</span>
-        </div>
-        <div className='text-emerald-400 text-lg font-semibold p-2'>
-          <span>{quantity} left</span>
+      <div className='p-8 bg-emerald-400 text-white rounded-xl font-semibold text-lg'>
+        <p className='text-left font-mono'>
+          <span className='font-bold text-xl'>About:</span>
+          <br /> {description}
+        </p>
+        <div className='p-4'>
+          <div className='flex items-center gap-8 p-2'>
+            <span>Price: {price} €</span>
+            <div></div>
+          </div>
+          <div className='p-2'>
+            <span>{quantity} left</span>
+          </div>
         </div>
       </div>
     </div>
@@ -29,3 +36,4 @@ const CrystalInfoPanel = ({name, description, price, quantity}: Props) => {
 };
 
 export default CrystalInfoPanel;
+

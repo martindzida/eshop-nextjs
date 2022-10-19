@@ -2,8 +2,10 @@ import type {NextPage} from 'next';
 import Link from 'next/link';
 import Head from 'next/head';
 import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 
 const Home: NextPage = () => {
+  //TODO: Google fonts - Inter
   return (
     <div>
       <Head>
@@ -29,14 +31,40 @@ const Home: NextPage = () => {
         </div>
       </section>
       <section>
-        <div className='text-emerald-400 text-xl font-bold p-20 text-center'>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente quisquam accusamus eligendi unde harum facere dicta deleniti tenetur,
-            omnis dolorem repellendus sunt ex rem, molestias officiis voluptatem nam, magni aperiam saepe numquam ducimus itaque. Laboriosam
-            distinctio quod iusto, nobis itaque deserunt et quisquam aperiam in officiis ad impedit repellendus earum!
-          </p>
+        <div className='flex justify-around gap-32 text-xl font-bold p-20 pt-32 text-center'>
+          <div className='basis-1/2 bg-emerald-300 text-white p-10 rounded-xl shadow-lg'>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente quisquam accusamus eligendi unde harum facere dicta deleniti tenetur,
+              omnis dolorem repellendus sunt ex rem, molestias officiis voluptatem nam, magni aperiam saepe numquam ducimus itaque. Laboriosam
+              distinctio quod iusto, nobis itaque deserunt et quisquam aperiam in officiis ad impedit repellendus earum!
+            </p>
+          </div>
+          <div className='basis-1/2  text-emerald-400 p-10 rounded-xl'>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente quisquam accusamus eligendi unde harum facere dicta deleniti tenetur,
+              omnis dolorem repellendus sunt ex rem, molestias officiis voluptatem nam, magni aperiam saepe numquam ducimus itaque. Laboriosam
+              distinctio quod iusto, nobis itaque deserunt et quisquam aperiam in officiis ad impedit repellendus earum!
+            </p>
+          </div>
+        </div>
+        <div className='flex justify-around gap-32 text-xl font-bold p-20 text-center'>
+          <div className='basis-1/2  text-emerald-400 p-10 rounded-xl'>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente quisquam accusamus eligendi unde harum facere dicta deleniti tenetur,
+              omnis dolorem repellendus sunt ex rem, molestias officiis voluptatem nam, magni aperiam saepe numquam ducimus itaque. Laboriosam
+              distinctio quod iusto, nobis itaque deserunt et quisquam aperiam in officiis ad impedit repellendus earum!
+            </p>
+          </div>
+          <div className='basis-1/2 bg-emerald-300 text-white p-10 rounded-xl shadow-lg'>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente quisquam accusamus eligendi unde harum facere dicta deleniti tenetur,
+              omnis dolorem repellendus sunt ex rem, molestias officiis voluptatem nam, magni aperiam saepe numquam ducimus itaque. Laboriosam
+              distinctio quod iusto, nobis itaque deserunt et quisquam aperiam in officiis ad impedit repellendus earum!
+            </p>
+          </div>
         </div>
       </section>
+      <Footer />
     </div>
   );
 };
