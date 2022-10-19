@@ -50,13 +50,7 @@ const Navbar = () => {
             </div>
           )}
           <div className='px-2 sm:hidden'>
-            <button
-              onClick={() => {
-                console.log('navbar dropdown');
-              }}
-            >
-              <Bars3Icon className='w-8 h-8' />
-            </button>
+            <Bars3Icon className='w-8 h-8' />
           </div>
         </div>
       </div>

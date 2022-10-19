@@ -3,6 +3,7 @@ import Head from 'next/head';
 import Navbar from '../components/Navbar';
 import CartItem from '../components/CartItem';
 import {useState} from 'react';
+import Modal from '../components/Modal';
 
 interface Order {
   id: number;
@@ -18,10 +19,15 @@ const Cart: NextPage = () => {
     {id: 1, name: 'Diamond', image: '/diamond.svg', quantity: 1, price: 1200},
     {id: 2, name: 'Sapphire', image: '/sapphire.svg', quantity: 2, price: 1100},
   ]);
+  const [modalOpen, setModalOpen] = useState(false);
 
   const totalPrice = data.map((item: Order) => item.quantity * item.price).reduce((total, current) => total + current, 0);
   const handleRemoveItem = (id: number) => {
     setData(data.filter(item => item.id !== id));
+  };
+
+  const handleCloseModal = () => {
+    setModalOpen(false);
   };
 
   return (
@@ -48,13 +54,17 @@ const Cart: NextPage = () => {
           />
         ))}
       </section>
+      <Modal opened={modalOpen} handleCloseModal={handleCloseModal} />
       <section className='flex justify-center'>
         <div className='w-2/3 text-right text-white font-semibold text-xl rounded-lg bg-emerald-300 p-8 my-4'>
           Total price: <span className='text-2xl px-10'>{totalPrice} €</span>
         </div>
       </section>
       <div className='flex justify-center p-4'>
-        <button className='text-emerald-300 bg-white text-lg font-semibold border border-emerald-300 transition ease-in-out duration-200 hover:bg-slate-50 rounded-lg p-2 m-2'>
+        <button
+          onClick={() => setModalOpen(true)}
+          className='text-emerald-300 bg-white text-lg font-semibold border border-emerald-300 transition ease-in-out duration-200 hover:bg-slate-50 rounded-lg p-2 m-2'
+        >
           Cancel
         </button>
         <button className='bg-emerald-300 text-white text-lg font-semibold transition ease-in-out duration-200 hover:bg-emerald-400 rounded-lg p-2 m-2'>
