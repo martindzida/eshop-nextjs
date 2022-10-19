@@ -1,5 +1,5 @@
 import {createContext} from 'react';
-import {Crystal} from '@prisma/client';
 
-export const cartContext = createContext<Crystal[]>([]);
+//FIXME: any is definitely not a good practice :)
+export const CartContext = createContext<any>(null);
 

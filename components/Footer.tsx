@@ -3,7 +3,7 @@ import React from 'react';
 const Footer = () => {
   return (
     <section>
-      <div className='border border-t-1'>Footer</div>
+      <div className='flex justify-center border border-t-1 p-20'>Footer</div>
     </section>
   );
 };

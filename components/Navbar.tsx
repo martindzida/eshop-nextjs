@@ -4,9 +4,12 @@ import {ShoppingCartIcon, Bars3Icon} from '@heroicons/react/24/outline';
 import CartItemsCountBadge from './CartItemsCountBadge';
 import {useSession, signIn} from 'next-auth/react';
 import ProfileDropdownMenu from './ProfileDropdownMenu';
+import {useContext} from 'react';
+import {CartContext} from '../utils/CartContext';
 
 const Navbar = () => {
   const {data: session, status} = useSession();
+  const {cartItems, setCartItems} = useContext(CartContext);
 
   return (
     <nav className='w-full shadow-md px-6 py-4 mx-auto'>
@@ -41,7 +44,7 @@ const Navbar = () => {
               <div className='hidden sm:block'>
                 <Link href='/cart'>
                   <a className='relative'>
-                    <CartItemsCountBadge count={2} />
+                    <CartItemsCountBadge count={cartItems.length} />
                     <ShoppingCartIcon className='w-8 h-8' />
                   </a>
                 </Link>
