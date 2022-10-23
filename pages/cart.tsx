@@ -4,27 +4,14 @@ import Navbar from '../components/Navbar';
 import CartItem from '../components/CartItem';
 import {useState} from 'react';
 import Modal from '../components/Modal';
-
-interface Order {
-  id: number;
-  name: string;
-  image: string;
-  quantity: number;
-  price: number;
-}
+import {useContext} from 'react';
+import {CartContext} from '../utils/CartContext';
+import {Crystal} from '@prisma/client';
+import Link from 'next/link';
 
 const Cart: NextPage = () => {
-  const [data, setData] = useState<Order[]>([
-    {id: 0, name: 'Emerald', image: '/emerald.svg', quantity: 3, price: 1000},
-    {id: 1, name: 'Diamond', image: '/diamond.svg', quantity: 1, price: 1200},
-    {id: 2, name: 'Sapphire', image: '/sapphire.svg', quantity: 2, price: 1100},
-  ]);
+  const {cartItems, setCartItems} = useContext(CartContext);
   const [modalOpen, setModalOpen] = useState(false);
-
-  const totalPrice = data.map((item: Order) => item.quantity * item.price).reduce((total, current) => total + current, 0);
-  const handleRemoveItem = (id: number) => {
-    setData(data.filter(item => item.id !== id));
-  };
 
   const handleCloseModal = () => {
     setModalOpen(false);
@@ -38,26 +25,25 @@ const Cart: NextPage = () => {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <Navbar />
+      <Modal opened={modalOpen} handleCloseModal={handleCloseModal} />
       <div className='text-center px-10 py-16'>
         <h1 className='text-emerald-400 text-5xl font-extrabold'>Your shopping cart</h1>
       </div>
       <section className='flex flex-col items-center'>
-        {data.map(item => (
+        {cartItems.map((item: any) => (
           <CartItem
-            key={item.id}
-            id={item.id}
-            name={item.name}
-            image={item.image}
+            key={item.item.id}
+            id={item.item.id}
+            name={item.item.name}
+            image={item.item.image}
             quantity={item.quantity}
-            price={item.price}
-            removeItem={handleRemoveItem}
+            price={item.item.price}
           />
         ))}
       </section>
-      <Modal opened={modalOpen} handleCloseModal={handleCloseModal} />
       <section className='flex justify-center'>
         <div className='w-2/3 text-right text-white font-semibold text-xl rounded-lg bg-emerald-300 p-8 my-4'>
-          Total price: <span className='text-2xl px-10'>{totalPrice} €</span>
+          Total price: <span className='text-2xl px-10'>{0} €</span>
         </div>
       </section>
       <div className='flex justify-center p-4'>
@@ -67,9 +53,11 @@ const Cart: NextPage = () => {
         >
           Cancel
         </button>
-        <button className='bg-emerald-300 text-white text-lg font-semibold transition ease-in-out duration-200 hover:bg-emerald-400 rounded-lg p-2 m-2'>
-          Purchase
-        </button>
+        <Link href='/checkout'>
+          <a className='bg-emerald-300 text-white text-lg font-semibold transition ease-in-out duration-200 hover:bg-emerald-400 rounded-lg p-2 m-2'>
+            Go to checkout
+          </a>
+        </Link>
       </div>
     </div>
   );
