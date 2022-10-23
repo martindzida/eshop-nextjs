@@ -6,8 +6,8 @@ import {useState} from 'react';
 import Modal from '../components/Modal';
 import {useContext} from 'react';
 import {CartContext} from '../utils/CartContext';
-import {Crystal} from '@prisma/client';
 import Link from 'next/link';
+import {cartItemType} from './crystals/[id]';
 
 const Cart: NextPage = () => {
   const {cartItems, setCartItems} = useContext(CartContext);
@@ -16,6 +16,16 @@ const Cart: NextPage = () => {
   const handleCloseModal = () => {
     setModalOpen(false);
   };
+
+  const getTotalPrice = (): number => {
+    return cartItems.reduce((acc: number, obj: cartItemType) => {
+      return acc + obj.item.price * obj.quantity;
+    }, 0);
+  };
+
+  const items = cartItems.map((item: cartItemType) => (
+    <CartItem key={item.item.id} id={item.item.id} name={item.item.name} image={item.item.image} quantity={item.quantity} price={item.item.price} />
+  ));
 
   return (
     <div>
@@ -29,21 +39,10 @@ const Cart: NextPage = () => {
       <div className='text-center px-10 py-16'>
         <h1 className='text-emerald-400 text-5xl font-extrabold'>Your shopping cart</h1>
       </div>
-      <section className='flex flex-col items-center'>
-        {cartItems.map((item: any) => (
-          <CartItem
-            key={item.item.id}
-            id={item.item.id}
-            name={item.item.name}
-            image={item.item.image}
-            quantity={item.quantity}
-            price={item.item.price}
-          />
-        ))}
-      </section>
+      <section className='flex flex-col items-center'>{cartItems.length ? items : 'Your cart is empty'}</section>
       <section className='flex justify-center'>
         <div className='w-2/3 text-right text-white font-semibold text-xl rounded-lg bg-emerald-300 p-8 my-4'>
-          Total price: <span className='text-2xl px-10'>{0} €</span>
+          Total price: <span className='text-2xl px-10'>{getTotalPrice()} €</span>
         </div>
       </section>
       <div className='flex justify-center p-4'>
