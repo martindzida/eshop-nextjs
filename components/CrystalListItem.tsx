@@ -17,6 +17,7 @@ const CrystalListItem = ({id, name, image}: Props) => {
       <div className='p-8 pb-10'>
         <Image src={image} alt='Product image' width={80} height={80} />
       </div>
+      {/*TODO: error when clicking link repeatedly */}
       <Link href={`/crystals/${id}`}>
         <a className='text-white bg-emerald-300 text-lg hover:bg-emerald-400 hover:-translate-y-1 hover:shadow-lg hover:shadow-emerald-400/50 transition ease-in-out duration-500 rounded-lg font-medium p-3'>
           Purchase

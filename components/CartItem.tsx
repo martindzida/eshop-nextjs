@@ -8,10 +8,9 @@ interface Props {
   image: string;
   quantity: number;
   price: number;
-  removeItem: (id: number) => void;
 }
 
-const CartItem = ({id, name, image, quantity, price, removeItem}: Props) => {
+const CartItem = ({id, name, image, quantity, price}: Props) => {
   return (
     <div className='flex justify-between text-emerald-400 border font-semibold text-lg rounded-lg shadow-md w-2/3 p-8 m-4'>
       <div className='flex items-center gap-8'>
@@ -21,7 +20,7 @@ const CartItem = ({id, name, image, quantity, price, removeItem}: Props) => {
       <div className='flex items-center gap-6'>
         <span>{quantity}x</span>
         <span>{price} €</span>
-        <button onClick={() => removeItem(id)} className='bg-emerald-400 rounded-lg p-1 m-1 text-center'>
+        <button onClick={() => console.log('removed')} className='bg-emerald-400 rounded-lg p-1 m-1 text-center'>
           <XMarkIcon className='w-6 h-6 text-white' />
         </button>
       </div>

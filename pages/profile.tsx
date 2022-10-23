@@ -5,7 +5,7 @@ import {useSession} from 'next-auth/react';
 import Image from 'next/image';
 import TransactionItem from '../components/TransactionItem';
 
-const Orders: NextPage = () => {
+const Profile: NextPage = () => {
   const {data: session, status} = useSession();
 
   return (
@@ -37,5 +37,5 @@ const Orders: NextPage = () => {
   );
 };
 
-export default Orders;
+export default Profile;
 

@@ -18,7 +18,7 @@ const Home: NextPage = () => {
         <h1 className='text-5xl sm:text-6xl lg:text-7xl text-emerald-400 font-extrabold p-12'>Crystalbase</h1>
       </div>
       <section>
-        <div className='flex flex-col items-center font-bold text-white bg-gradient-to-b from-emerald-400 via-green-400 to-sky-400 px-10 py-24'>
+        <div className='flex flex-col items-center font-bold text-white bg-gradient-to-b from-emerald-400 via-green-400 to-cyan-500 px-10 py-24'>
           <h2 className='text-2xl sm:text-3xl lg:text-4xl font-extrabold text-center p-10'>Best Virtual Crystals Marketplace</h2>
           <p className='text-xl text-center'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, necessitatibus.</p>
           <div className='p-14'>
