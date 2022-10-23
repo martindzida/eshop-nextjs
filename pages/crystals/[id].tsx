@@ -8,7 +8,7 @@ import {useContext} from 'react';
 import {CartContext} from '../../utils/CartContext';
 import {Crystal} from '@prisma/client';
 
-type cartItemType = {item: Crystal; quantity: number};
+export type cartItemType = {item: Crystal; quantity: number};
 
 const Product: NextPage = (props: any) => {
   const {cartItems, setCartItems} = useContext(CartContext);
@@ -26,7 +26,6 @@ const Product: NextPage = (props: any) => {
       setCartItems([...cartItems, newItem]);
     }
   };
-  console.log(cartItems);
 
   return (
     <div>
