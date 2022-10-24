@@ -47,17 +47,17 @@ const Modal = ({opened, handleCloseModal}: Props) => {
                     <p className='text-sm text-gray-500'>Are you sure you want to cancel this transaction? Your cart will be emptied.</p>
                   </div>
 
-                  <div className='mt-4'>
+                  <div className='mt-4 flex justify-center gap-4'>
                     <button
                       type='button'
-                      className='inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2'
+                      className='inline-flex justify-center rounded-md border border-transparent bg-emerald-300 px-4 py-2 text-sm font-medium text-white hover:bg-emerald-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2'
                       onClick={handleCloseModal}
                     >
                       Yes
                     </button>
                     <button
                       type='button'
-                      className='inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2'
+                      className='inline-flex justify-center rounded-md border border-transparent bg-emerald-300 px-4 py-2 text-sm font-medium text-white hover:bg-emerald-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2'
                       onClick={handleCloseModal}
                     >
                       No

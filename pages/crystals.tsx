@@ -2,7 +2,6 @@ import type {NextPage} from 'next';
 import Head from 'next/head';
 import Navbar from '../components/Navbar';
 import CrystalListItem from '../components/CrystalListItem';
-import LoadingPage from '../components/LoadingPage';
 import {Crystal} from '@prisma/client';
 import {prisma} from '../lib/prisma';
 

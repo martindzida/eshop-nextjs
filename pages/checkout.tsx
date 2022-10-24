@@ -11,6 +11,12 @@ const Checkout: NextPage = () => {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <Navbar />
+      <div className='text-center px-10 py-16'>
+        <h1 className='text-emerald-400 text-5xl font-extrabold'>Checkout</h1>
+      </div>
+      <div className='text-center px-10 py-16'>
+        <h2 className='text-emerald-400 text-5xl font-extrabold'>Transaction details</h2>
+      </div>
     </div>
   );
 };
