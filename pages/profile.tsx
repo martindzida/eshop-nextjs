@@ -4,6 +4,7 @@ import Navbar from '../components/Navbar';
 import {useSession} from 'next-auth/react';
 import Image from 'next/image';
 import TransactionItem from '../components/TransactionItem';
+import ProfileInfoPanel from '../components/ProfileInfoPanel';
 
 const Profile: NextPage = () => {
   const {data: session, status} = useSession();
@@ -20,11 +21,7 @@ const Profile: NextPage = () => {
         <div className='flex justify-around items-around p-32 gap-10'>
           <div className='basis-1/3 bg-emerald-400 p-16 rounded-xl'>
             <h1 className='text-white text-4xl font-extrabold p-4'>Profile Info</h1>
-            <div className='p-10 text-white bg-emerald-300 rounded-lg'>
-              {session?.user?.image && <Image src={session?.user?.image} width={80} height={80} className='rounded-full' />}
-              <h2 className='font-bold text-xl py-4'>{session?.user?.name}</h2>
-              <span className='font-semibold py-4'>{session?.user?.email}</span>
-            </div>
+            <ProfileInfoPanel session={session} />
           </div>
           <div className='basis-2/3 flex flex-col items-center bg-emerald-400 rounded-xl p-16'>
             <h2 className='text-white text-4xl font-extrabold p-4'>Latest Transactions</h2>

@@ -10,8 +10,8 @@ const ProfileDropdownMenu = () => {
   const router = useRouter();
 
   const handleSignOut = () => {
-    signOut();
     router.push('/');
+    signOut();
   };
 
   return (
