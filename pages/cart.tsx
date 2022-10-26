@@ -5,8 +5,8 @@ import {useState} from 'react';
 import Modal from '../components/Modal';
 import Link from 'next/link';
 import CartItemsList from '../components/CartItemsList';
-import CancelTransactionDialog from '../components/dialogs/CancelTransactionDialog';
 import CartTotalPricePanel from '../components/CartTotalPricePanel';
+import DialogTemplate from '../components/DialogTemplate';
 
 const Cart: NextPage = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -24,7 +24,22 @@ const Cart: NextPage = () => {
       </Head>
       <Navbar />
       <Modal opened={modalOpen} handleCloseModal={handleCloseModal}>
-        <CancelTransactionDialog handleCloseModal={handleCloseModal} />
+        <DialogTemplate title='Empty your cart' description='Are you sure you want to empty your cart?' handleCloseModal={handleCloseModal}>
+          <button
+            type='button'
+            className='inline-flex justify-center rounded-md border border-transparent bg-emerald-300 px-4 py-2 text-sm font-medium text-white hover:bg-emerald-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2'
+            onClick={handleCloseModal}
+          >
+            Yes
+          </button>
+          <button
+            type='button'
+            className='inline-flex justify-center rounded-md border border-transparent bg-emerald-300 px-4 py-2 text-sm font-medium text-white hover:bg-emerald-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2'
+            onClick={handleCloseModal}
+          >
+            No
+          </button>
+        </DialogTemplate>
       </Modal>
       <div className='text-center px-10 py-16'>
         <h1 className='text-emerald-400 text-5xl font-extrabold'>Your shopping cart</h1>
@@ -36,7 +51,7 @@ const Cart: NextPage = () => {
           onClick={() => setModalOpen(true)}
           className='text-emerald-300 bg-white text-lg font-semibold border border-emerald-300 transition ease-in-out duration-200 hover:bg-slate-50 rounded-lg p-2 m-2'
         >
-          Cancel
+          Empty cart
         </button>
         <Link href='/checkout'>
           <a className='bg-emerald-300 text-white text-lg font-semibold transition ease-in-out duration-200 hover:bg-emerald-400 rounded-lg p-2 m-2'>
