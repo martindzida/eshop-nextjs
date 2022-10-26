@@ -1,12 +1,10 @@
 import type {NextPage} from 'next';
-import Link from 'next/link';
 import Head from 'next/head';
 import Navbar from '../components/Navbar';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 const Home: NextPage = () => {
-  //TODO: Google fonts - Inter
   return (
     <div>
       <Head>

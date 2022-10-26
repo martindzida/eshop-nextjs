@@ -1,8 +1,12 @@
 import type {NextPage} from 'next';
 import Head from 'next/head';
 import Navbar from '../components/Navbar';
+import ProfileInfoPanel from '../components/ProfileInfoPanel';
+import {useSession} from 'next-auth/react';
 
 const Checkout: NextPage = () => {
+  const {data: session, status} = useSession();
+
   return (
     <div>
       <Head>
@@ -17,6 +21,13 @@ const Checkout: NextPage = () => {
       <div className='text-center px-10 py-16'>
         <h2 className='text-emerald-400 text-5xl font-extrabold'>Transaction details</h2>
       </div>
+      <section>
+        <div className='flex p-16'>
+          <div className='basis-1/4'>
+            <ProfileInfoPanel session={session} />
+          </div>
+        </div>
+      </section>
     </div>
   );
 };

@@ -2,7 +2,6 @@ import type {NextPage} from 'next';
 import Head from 'next/head';
 import Navbar from '../components/Navbar';
 import {useSession} from 'next-auth/react';
-import Image from 'next/image';
 import TransactionItem from '../components/TransactionItem';
 import ProfileInfoPanel from '../components/ProfileInfoPanel';
 
