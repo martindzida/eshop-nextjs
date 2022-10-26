@@ -4,29 +4,12 @@ import Navbar from '../../components/Navbar';
 import CrystalInfoPanel from '../../components/CrystalInfoPanel';
 import CrystalCategoryItem from '../../components/CrystalCategoryItem';
 import {prisma} from '../../lib/prisma';
-import {useContext} from 'react';
-import {CartContext} from '../../utils/CartContext';
 import {Crystal} from '@prisma/client';
+import AddItemBtn from '../../components/AddItemBtn';
 
 export type CartItemType = {item: Crystal; quantity: number};
 
 const Product: NextPage = (props: any) => {
-  const {cartItems, setCartItems} = useContext(CartContext);
-
-  const handleCartItemPush = (newItem: CartItemType) => {
-    if (cartItems.findIndex((i: CartItemType) => i.item.id === newItem.item.id) >= 0) {
-      const newObjs = cartItems.map((i: CartItemType) => {
-        if (i.item.id === newItem.item.id) {
-          return {...i, quantity: i.quantity + 1};
-        }
-        return {...i};
-      });
-      setCartItems(newObjs);
-    } else {
-      setCartItems([...cartItems, newItem]);
-    }
-  };
-
   return (
     <div>
       <Head>
@@ -38,12 +21,7 @@ const Product: NextPage = (props: any) => {
       <div className='px-12 py-16'>
         <CrystalInfoPanel name={props.name} image={props.image} description={props.description} price={props.price} quantity={props.quantity} />
         <div className='text-center p-4 m-2'>
-          <button
-            onClick={() => handleCartItemPush({item: props, quantity: 1})}
-            className='text-lg transition ease-in-out duration-200 text-emerald-400 font-semibold hover:bg-emerald-400 hover:text-white border border-emerald-400 rounded-lg px-6 py-4'
-          >
-            Add to cart
-          </button>
+          <AddItemBtn item={props} />
         </div>
         <div className='bg-white text-emerald-400 text-xl text-center font-bold pt-8 p-4'>
           <h3>You may also like:</h3>

@@ -6,7 +6,7 @@ import Modal from '../components/Modal';
 import Link from 'next/link';
 import CartItemsList from '../components/CartItemsList';
 import CancelTransactionDialog from '../components/dialogs/CancelTransactionDialog';
-import useGetTotalPrice from '../utils/useGetTotalPrice';
+import CartTotalPricePanel from '../components/CartTotalPricePanel';
 
 const Cart: NextPage = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -14,8 +14,6 @@ const Cart: NextPage = () => {
   const handleCloseModal = () => {
     setModalOpen(false);
   };
-
-  const totalPrice = useGetTotalPrice();
 
   return (
     <div>
@@ -32,14 +30,7 @@ const Cart: NextPage = () => {
         <h1 className='text-emerald-400 text-5xl font-extrabold'>Your shopping cart</h1>
       </div>
       <CartItemsList />
-      <section
-        className='flex 
-      justify-center'
-      >
-        <div className='w-2/3 text-right text-white font-semibold text-xl rounded-lg bg-emerald-300 p-8 my-4'>
-          Total price: <span className='text-2xl px-10'>{totalPrice} €</span>
-        </div>
-      </section>
+      <CartTotalPricePanel />
       <div className='flex justify-center p-4'>
         <button
           onClick={() => setModalOpen(true)}
