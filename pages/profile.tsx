@@ -1,13 +1,10 @@
 import type {NextPage} from 'next';
 import Head from 'next/head';
 import Navbar from '../components/Navbar';
-import {useSession} from 'next-auth/react';
 import TransactionItem from '../components/TransactionItem';
 import ProfileInfoPanel from '../components/ProfileInfoPanel';
 
 const Profile: NextPage = () => {
-  const {data: session, status} = useSession();
-
   return (
     <div>
       <Head>
@@ -20,7 +17,7 @@ const Profile: NextPage = () => {
         <div className='flex justify-around items-around p-32 gap-10'>
           <div className='basis-1/3 bg-emerald-400 p-16 rounded-xl'>
             <h1 className='text-white text-4xl font-extrabold p-4'>Profile Info</h1>
-            <ProfileInfoPanel session={session} />
+            <ProfileInfoPanel />
           </div>
           <div className='basis-2/3 flex flex-col items-center bg-emerald-400 rounded-xl p-16'>
             <h2 className='text-white text-4xl font-extrabold p-4'>Latest Transactions</h2>

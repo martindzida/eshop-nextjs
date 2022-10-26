@@ -1,9 +1,8 @@
 import type {NextPage} from 'next';
 import Head from 'next/head';
 import Navbar from '../components/Navbar';
-import CrystalListItem from '../components/CrystalListItem';
-import {Crystal} from '@prisma/client';
 import {prisma} from '../lib/prisma';
+import CrystalsList from '../components/CrystalsList';
 
 const Crystals: NextPage = ({crystals}: any) => {
   return (
@@ -17,11 +16,7 @@ const Crystals: NextPage = ({crystals}: any) => {
       <div className='text-emerald-400 text-center px-12 pt-16'>
         <h1 className='text-5xl font-extrabold'>Crystals List</h1>
       </div>
-      <div className='md:grid lg:grid-cols-3 md:grid-cols-2 flex flex-col justify-around gap-8 p-12 my-8'>
-        {crystals.map((crystal: Crystal) => (
-          <CrystalListItem key={crystal.id} id={crystal.id} name={crystal.name} image={crystal.image} />
-        ))}
-      </div>
+      <CrystalsList crystals={crystals} />
       <div className='text-emerald-400 text-center p-10'>
         <h2 className='text-4xl font-bold text-center'>Categories</h2>
       </div>

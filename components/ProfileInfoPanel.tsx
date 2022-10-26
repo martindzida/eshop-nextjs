@@ -1,12 +1,9 @@
 import React from 'react';
 import Image from 'next/image';
-import type {Session} from 'next-auth';
+import {useSession} from 'next-auth/react';
 
-interface Props {
-  session: Session | null;
-}
-
-const ProfileInfoPanel = ({session}: Props) => {
+const ProfileInfoPanel = () => {
+  const {data: session} = useSession();
   return (
     <div className='p-10 text-white bg-emerald-300 rounded-lg'>
       {session?.user?.image && <Image src={session?.user?.image} width={80} height={80} className='rounded-full' />}
