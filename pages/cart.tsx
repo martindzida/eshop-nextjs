@@ -1,29 +1,21 @@
 import type {NextPage} from 'next';
 import Head from 'next/head';
 import Navbar from '../components/Navbar';
-import CartItem from '../components/CartItem';
 import {useState} from 'react';
 import Modal from '../components/Modal';
-import {useContext} from 'react';
-import {CartContext} from '../utils/CartContext';
 import Link from 'next/link';
-import {CartItemType} from './crystals/[id]';
 import CartItemsList from '../components/CartItemsList';
-import CancelTransactionDialog from '../components/CancelTransactionDialog';
+import CancelTransactionDialog from '../components/dialogs/CancelTransactionDialog';
+import useGetTotalPrice from '../utils/useGetTotalPrice';
 
 const Cart: NextPage = () => {
-  const {cartItems} = useContext(CartContext);
   const [modalOpen, setModalOpen] = useState(false);
 
   const handleCloseModal = () => {
     setModalOpen(false);
   };
 
-  const getTotalPrice = (): number => {
-    return cartItems.reduce((acc: number, obj: CartItemType) => {
-      return acc + obj.item.price * obj.quantity;
-    }, 0);
-  };
+  const totalPrice = useGetTotalPrice();
 
   return (
     <div>
@@ -45,7 +37,7 @@ const Cart: NextPage = () => {
       justify-center'
       >
         <div className='w-2/3 text-right text-white font-semibold text-xl rounded-lg bg-emerald-300 p-8 my-4'>
-          Total price: <span className='text-2xl px-10'>{getTotalPrice()} €</span>
+          Total price: <span className='text-2xl px-10'>{totalPrice} €</span>
         </div>
       </section>
       <div className='flex justify-center p-4'>

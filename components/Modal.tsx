@@ -8,8 +8,6 @@ interface Props {
 }
 
 const Modal = ({opened, handleCloseModal, children}: Props) => {
-  const [isOpen, setIsOpen] = useState(false);
-
   return (
     <>
       <Transition appear show={opened} as={Fragment}>
