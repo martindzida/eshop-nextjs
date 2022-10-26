@@ -8,14 +8,14 @@ import {useContext} from 'react';
 import {CartContext} from '../../utils/CartContext';
 import {Crystal} from '@prisma/client';
 
-export type cartItemType = {item: Crystal; quantity: number};
+export type CartItemType = {item: Crystal; quantity: number};
 
 const Product: NextPage = (props: any) => {
   const {cartItems, setCartItems} = useContext(CartContext);
 
-  const handleCartItemPush = (newItem: cartItemType) => {
-    if (cartItems.findIndex((i: cartItemType) => i.item.id === newItem.item.id) >= 0) {
-      const newObjs = cartItems.map((i: cartItemType) => {
+  const handleCartItemPush = (newItem: CartItemType) => {
+    if (cartItems.findIndex((i: CartItemType) => i.item.id === newItem.item.id) >= 0) {
+      const newObjs = cartItems.map((i: CartItemType) => {
         if (i.item.id === newItem.item.id) {
           return {...i, quantity: i.quantity + 1};
         }

@@ -1,16 +1,14 @@
-import React, {useState, Fragment} from 'react';
+import React, {useState, Fragment, ReactNode} from 'react';
 import {Dialog, Transition} from '@headlessui/react';
 
 interface Props {
   opened: boolean;
   handleCloseModal: () => void;
+  children?: ReactNode;
 }
 
-const Modal = ({opened, handleCloseModal}: Props) => {
+const Modal = ({opened, handleCloseModal, children}: Props) => {
   const [isOpen, setIsOpen] = useState(false);
-
-  const openModal = () => setIsOpen(true);
-  const closeModal = () => setIsOpen(false);
 
   return (
     <>
@@ -40,29 +38,7 @@ const Modal = ({opened, handleCloseModal}: Props) => {
                 leaveTo='opacity-0 scale-95'
               >
                 <Dialog.Panel className='w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all'>
-                  <Dialog.Title as='h3' className='text-lg font-medium leading-6 text-gray-900'>
-                    Cancel transaction
-                  </Dialog.Title>
-                  <div className='mt-2'>
-                    <p className='text-sm text-gray-500'>Are you sure you want to cancel this transaction? Your cart will be emptied.</p>
-                  </div>
-
-                  <div className='mt-4 flex justify-center gap-4'>
-                    <button
-                      type='button'
-                      className='inline-flex justify-center rounded-md border border-transparent bg-emerald-300 px-4 py-2 text-sm font-medium text-white hover:bg-emerald-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2'
-                      onClick={handleCloseModal}
-                    >
-                      Yes
-                    </button>
-                    <button
-                      type='button'
-                      className='inline-flex justify-center rounded-md border border-transparent bg-emerald-300 px-4 py-2 text-sm font-medium text-white hover:bg-emerald-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2'
-                      onClick={handleCloseModal}
-                    >
-                      No
-                    </button>
-                  </div>
+                  {children}
                 </Dialog.Panel>
               </Transition.Child>
             </div>

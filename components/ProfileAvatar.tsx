@@ -5,12 +5,12 @@ import {ShoppingCartIcon} from '@heroicons/react/24/solid';
 import ProfileDropdownMenu from './ProfileDropdownMenu';
 import {useContext} from 'react';
 import {CartContext} from '../utils/CartContext';
-import {cartItemType} from '../pages/crystals/[id]';
+import {CartItemType} from '../pages/crystals/[id]';
 
 const ProfileAvatar = () => {
   const {cartItems, setCartItems} = useContext(CartContext);
   const cartItemsCount = (): number => {
-    return cartItems.reduce((acc: number, obj: cartItemType) => {
+    return cartItems.reduce((acc: number, obj: CartItemType) => {
       return acc + obj.quantity;
     }, 0);
   };

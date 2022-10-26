@@ -7,10 +7,12 @@ import Modal from '../components/Modal';
 import {useContext} from 'react';
 import {CartContext} from '../utils/CartContext';
 import Link from 'next/link';
-import {cartItemType} from './crystals/[id]';
+import {CartItemType} from './crystals/[id]';
+import CartItemsList from '../components/CartItemsList';
+import CancelTransactionDialog from '../components/CancelTransactionDialog';
 
 const Cart: NextPage = () => {
-  const {cartItems, setCartItems} = useContext(CartContext);
+  const {cartItems} = useContext(CartContext);
   const [modalOpen, setModalOpen] = useState(false);
 
   const handleCloseModal = () => {
@@ -18,14 +20,10 @@ const Cart: NextPage = () => {
   };
 
   const getTotalPrice = (): number => {
-    return cartItems.reduce((acc: number, obj: cartItemType) => {
+    return cartItems.reduce((acc: number, obj: CartItemType) => {
       return acc + obj.item.price * obj.quantity;
     }, 0);
   };
-
-  const items = cartItems.map((item: cartItemType) => (
-    <CartItem key={item.item.id} id={item.item.id} name={item.item.name} image={item.item.image} quantity={item.quantity} price={item.item.price} />
-  ));
 
   return (
     <div>
@@ -35,12 +33,17 @@ const Cart: NextPage = () => {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <Navbar />
-      <Modal opened={modalOpen} handleCloseModal={handleCloseModal} />
+      <Modal opened={modalOpen} handleCloseModal={handleCloseModal}>
+        <CancelTransactionDialog handleCloseModal={handleCloseModal} />
+      </Modal>
       <div className='text-center px-10 py-16'>
         <h1 className='text-emerald-400 text-5xl font-extrabold'>Your shopping cart</h1>
       </div>
-      <section className='flex flex-col items-center'>{cartItems.length ? items : 'Your cart is empty'}</section>
-      <section className='flex justify-center'>
+      <CartItemsList />
+      <section
+        className='flex 
+      justify-center'
+      >
         <div className='w-2/3 text-right text-white font-semibold text-xl rounded-lg bg-emerald-300 p-8 my-4'>
           Total price: <span className='text-2xl px-10'>{getTotalPrice()} €</span>
         </div>
