@@ -6,16 +6,21 @@ import ProfileInfoPanel from '../components/ProfileInfoPanel';
 import {useSession} from 'next-auth/react';
 import {useQuery} from '@tanstack/react-query';
 import axios from 'axios';
+import LoadingPage from '../components/LoadingPage';
 
 const Profile: NextPage = () => {
-  const {data: session, status} = useSession();
-  let isSession = typeof session?.user?.email === 'string';
-  const {data, isLoading, isFetching} = useQuery(['user'], () => axios.get(`api/user/${session?.user?.email}`).then(res => res.data), {
+  const {data: session} = useSession();
+  //FIXME: TS won't let me use my hook
+  let isSession = session !== null && typeof session?.user?.email === 'string';
+
+  const {data, isLoading} = useQuery(['user'], () => axios.get(`api/user/${session?.user?.email}`).then(res => res.data), {
     enabled: isSession,
   });
-  if (isLoading || isFetching) {
-    return <div>Loading...</div>;
+
+  if (isLoading) {
+    return <LoadingPage />;
   }
+
   return (
     <div>
       <Head>
