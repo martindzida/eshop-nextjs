@@ -6,10 +6,18 @@ import CrystalCategoryItem from '../../components/CrystalCategoryItem';
 import {prisma} from '../../lib/prisma';
 import {Crystal} from '@prisma/client';
 import AddItemBtn from '../../components/AddItemBtn';
+import Modal from '../../components/Modal';
+import {useState} from 'react';
 
 export type CartItemType = {item: Crystal; quantity: number};
 
 const Product: NextPage = (props: any) => {
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const handleCloseModal = () => {
+    setModalOpen(false);
+  };
+  //Modal will be triggered by AddItemBtn
   return (
     <div>
       <Head>
@@ -18,8 +26,9 @@ const Product: NextPage = (props: any) => {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <Navbar />
+      <Modal opened={modalOpen} handleCloseModal={handleCloseModal} title='Quantity' description='tbd'></Modal>
       <div className='px-12 py-16'>
-        <CrystalInfoPanel name={props.name} image={props.image} description={props.description} price={props.price} quantity={props.quantity} />
+        <CrystalInfoPanel {...props} />
         <div className='text-center p-4 m-2'>
           <AddItemBtn item={props} />
         </div>

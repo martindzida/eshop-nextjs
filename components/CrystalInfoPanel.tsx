@@ -27,7 +27,7 @@ const CrystalInfoPanel = ({name, image, description, price, quantity}: Props) =>
             <div></div>
           </div>
           <div className='p-2'>
-            <span>{quantity} left</span>
+            <span>{quantity === 0 ? 'Out of stock' : `${quantity} left`}</span>
           </div>
         </div>
       </div>
