@@ -1,14 +1,16 @@
 import React from 'react';
 import Image from 'next/image';
-import {useSession} from 'next-auth/react';
+import {User} from '@prisma/client';
 
-const ProfileInfoPanel = () => {
-  const {data: session} = useSession();
+const ProfileInfoPanel = ({name, email, image, balance}: User) => {
   return (
     <div className='p-10 text-white bg-emerald-300 rounded-lg'>
-      {session?.user?.image && <Image src={session?.user?.image} width={80} height={80} className='rounded-full' />}
-      <h2 className='font-bold text-xl py-4'>{session?.user?.name}</h2>
-      <span className='font-semibold py-4'>{session?.user?.email}</span>
+      {image ? <Image src={image} width={80} height={80} className='rounded-full' /> : null}
+      <div className='flex flex-col'>
+        <h2 className='font-bold text-xl py-4'>{name}</h2>
+        <span className='font-semibold py-4'>{email}</span>
+        <span className='font-semibold py-4'>Balance: {balance} €</span>
+      </div>
     </div>
   );
 };

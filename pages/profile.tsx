@@ -3,8 +3,19 @@ import Head from 'next/head';
 import Navbar from '../components/Navbar';
 import TransactionItem from '../components/TransactionItem';
 import ProfileInfoPanel from '../components/ProfileInfoPanel';
+import {useSession} from 'next-auth/react';
+import {useQuery} from '@tanstack/react-query';
+import axios from 'axios';
 
 const Profile: NextPage = () => {
+  const {data: session, status} = useSession();
+  let isSession = typeof session?.user?.email === 'string';
+  const {data, isLoading, isFetching} = useQuery(['user'], () => axios.get(`api/user/${session?.user?.email}`).then(res => res.data), {
+    enabled: isSession,
+  });
+  if (isLoading || isFetching) {
+    return <div>Loading...</div>;
+  }
   return (
     <div>
       <Head>
@@ -17,18 +28,13 @@ const Profile: NextPage = () => {
         <div className='flex justify-around items-around p-32 gap-10'>
           <div className='basis-1/3 bg-emerald-400 p-16 rounded-xl'>
             <h1 className='text-white text-4xl font-extrabold p-4'>Profile Info</h1>
-            <ProfileInfoPanel />
+            <ProfileInfoPanel {...data} />
           </div>
           <div className='basis-2/3 flex flex-col items-center bg-emerald-400 rounded-xl p-16'>
             <h2 className='text-white text-4xl font-extrabold p-4'>Latest Transactions</h2>
             <TransactionItem />
             <TransactionItem />
           </div>
-        </div>
-      </section>
-      <section>
-        <div className='flex justify-center'>
-          <h2 className='text-emerald-400 text-3xl font-extrabold p-4'>My Inventory</h2>
         </div>
       </section>
     </div>

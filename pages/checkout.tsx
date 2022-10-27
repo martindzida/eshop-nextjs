@@ -2,10 +2,15 @@ import type {NextPage} from 'next';
 import Head from 'next/head';
 import Navbar from '../components/Navbar';
 import ProfileInfoPanel from '../components/ProfileInfoPanel';
-import {useSession} from 'next-auth/react';
+import CartItemsList from '../components/CartItemsList';
+import {useMutation} from '@tanstack/react-query';
+import axios from 'axios';
 
 const Checkout: NextPage = () => {
-  const {data: session, status} = useSession();
+  const makeTransaction = useMutation(newTransaction => {
+    //TODO: make the endpoint
+    return axios.post('/', newTransaction);
+  });
 
   return (
     <div>
@@ -24,8 +29,16 @@ const Checkout: NextPage = () => {
       <section>
         <div className='flex p-16'>
           <div className='basis-1/4'>
-            <ProfileInfoPanel session={session} />
+            <ProfileInfoPanel />
           </div>
+          <div className='basis-3/4'>
+            <CartItemsList />
+          </div>
+        </div>
+        <div className='flex justify-center'>
+          <button className='bg-emerald-300 text-white hover:bg-emerald-400 transition ease-in-out duration-300 font-bold text-lg rounded-lg p-3'>
+            Confirm
+          </button>
         </div>
       </section>
     </div>

@@ -33,6 +33,13 @@ const ProfileDropdownMenu = () => {
         </Menu.Item>
         <Menu.Item>
           {({active}) => (
+            <Link href='/inventory'>
+              <a className={'bg-white block px-4 py-2 text-sm text-emerald-400'}>My Inventory</a>
+            </Link>
+          )}
+        </Menu.Item>
+        <Menu.Item>
+          {({active}) => (
             <a onClick={handleSignOut} className={'text-emerald-400 cursor-pointer block px-4 py-2 text-sm bg-white'}>
               Sign out
             </a>

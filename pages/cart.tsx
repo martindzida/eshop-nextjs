@@ -7,11 +7,20 @@ import Link from 'next/link';
 import CartItemsList from '../components/CartItemsList';
 import CartTotalPricePanel from '../components/CartTotalPricePanel';
 import DialogTemplate from '../components/DialogTemplate';
+import {useContext} from 'react';
+import {CartContext} from '../utils/CartContext';
 
 const Cart: NextPage = () => {
+  const {setCartItems} = useContext(CartContext);
   const [modalOpen, setModalOpen] = useState(false);
 
+  //TODO: mayber currying(?)
   const handleCloseModal = () => {
+    setModalOpen(false);
+  };
+
+  const handleEmptyCartAnswer = (answer: boolean) => {
+    if (answer) setCartItems([]);
     setModalOpen(false);
   };
 
@@ -24,18 +33,18 @@ const Cart: NextPage = () => {
       </Head>
       <Navbar />
       <Modal opened={modalOpen} handleCloseModal={handleCloseModal}>
-        <DialogTemplate title='Empty your cart' description='Are you sure you want to empty your cart?' handleCloseModal={handleCloseModal}>
+        <DialogTemplate title='Empty your cart' description='Are you sure you want to empty your cart?'>
           <button
             type='button'
             className='inline-flex justify-center rounded-md border border-transparent bg-emerald-300 px-4 py-2 text-sm font-medium text-white hover:bg-emerald-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2'
-            onClick={handleCloseModal}
+            onClick={() => handleEmptyCartAnswer(true)}
           >
             Yes
           </button>
           <button
             type='button'
             className='inline-flex justify-center rounded-md border border-transparent bg-emerald-300 px-4 py-2 text-sm font-medium text-white hover:bg-emerald-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2'
-            onClick={handleCloseModal}
+            onClick={() => handleEmptyCartAnswer(false)}
           >
             No
           </button>

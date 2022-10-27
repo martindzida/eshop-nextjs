@@ -5,10 +5,9 @@ interface Props {
   title: string;
   description: string;
   children?: ReactNode;
-  handleCloseModal: () => void;
 }
 
-const DialogTemplate = ({title, description, children, handleCloseModal}: Props) => {
+const DialogTemplate = ({title, description, children}: Props) => {
   return (
     <>
       <Dialog.Title as='h3' className='text-lg font-medium leading-6 text-gray-900'>

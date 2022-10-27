@@ -1,15 +1,12 @@
 import React from 'react';
 import Link from 'next/link';
 import {Bars3Icon} from '@heroicons/react/24/outline';
-import {useSession, signIn} from 'next-auth/react';
-import {useContext} from 'react';
-import {CartContext} from '../utils/CartContext';
+import {useSession} from 'next-auth/react';
 import SignInBtn from './SignInBtn';
 import ProfileAvatar from './ProfileAvatar';
 
 const Navbar = () => {
   const {data: session, status} = useSession();
-  const {cartItems, setCartItems} = useContext(CartContext);
 
   return (
     <nav className='w-full shadow-md px-6 py-4 mx-auto'>
@@ -29,8 +26,8 @@ const Navbar = () => {
           )}
         </div>
         <div className='flex items-center'>
-          {status !== 'authenticated' && <SignInBtn />}
-          {status === 'authenticated' && <ProfileAvatar />}
+          {status !== 'authenticated' ? <SignInBtn /> : null}
+          {status === 'authenticated' ? <ProfileAvatar /> : null}
           <div className='px-2 sm:hidden'>
             <Bars3Icon className='w-8 h-8' />
           </div>
