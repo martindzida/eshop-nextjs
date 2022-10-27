@@ -3,8 +3,20 @@ import Head from 'next/head';
 import Navbar from '../components/Navbar';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import {useSession} from 'next-auth/react';
+import LoadingPage from '../components/LoadingPage';
+import useGetCurrentUser from '../utils/useGetCurrentUser';
 
 const Home: NextPage = () => {
+  //FIXME: flesh of unwanted content
+  const {data: session, status} = useSession();
+  let isSession = session !== null && typeof session?.user?.email === 'string';
+
+  const {data, isLoading} = useGetCurrentUser(session?.user?.email, isSession);
+
+  if (status === 'authenticated' && isLoading) {
+    return <LoadingPage />;
+  }
   return (
     <div>
       <Head>
