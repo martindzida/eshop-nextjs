@@ -17,7 +17,7 @@ const CrystalInfoPanel = ({name, image, description, price, quantity}: Props) =>
         <Image src={image} alt={name} width={200} height={200} />
       </div>
       <div className='p-8 bg-emerald-400 text-white rounded-xl font-semibold text-lg'>
-        <p className='text-left font-mono'>
+        <p className='text-left font-inter'>
           <span className='font-bold text-xl'>About:</span>
           <br /> {description}
         </p>

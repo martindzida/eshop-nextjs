@@ -48,6 +48,9 @@ export const getStaticProps = async ({params}: any) => {
     where: {
       id: parseInt(params.id),
     },
+    include: {
+      categories: true,
+    },
   });
   const crystal = JSON.parse(JSON.stringify(data));
   return {props: crystal};

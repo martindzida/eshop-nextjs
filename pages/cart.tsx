@@ -10,7 +10,7 @@ import {useContext} from 'react';
 import {CartContext} from '../utils/CartContext';
 
 const Cart: NextPage = () => {
-  const {setCartItems} = useContext(CartContext);
+  const {cartItems, setCartItems} = useContext(CartContext);
   const [modalOpen, setModalOpen] = useState(false);
 
   const handleCloseModal = () => {

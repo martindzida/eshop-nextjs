@@ -44,6 +44,7 @@ model User {
   emailVerified DateTime?
   image         String?
   balance       Int @default(0)
+  transactions  Transaction[]
   accounts      Account[]
   sessions      Session[]
 }
@@ -65,7 +66,7 @@ model Crystal {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   categories Category[]
-  orders CrystalsOnTransactions[]
+  transactions CrystalsOnTransactions[]
 }
 
 model Category {
@@ -73,12 +74,13 @@ model Category {
   name String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  products Crystal[]
+  crystals Crystal[]
 }
 
 model Transaction {
   id String @id @default(uuid())
   userId String
+  user User @relation(fields: [userId], references: [id])
   createdAt DateTime @default(now())
   products CrystalsOnTransactions[]
 }
@@ -89,6 +91,7 @@ model CrystalsOnTransactions {
   transaction Transaction @relation(fields: [transactionId], references: [id])
   transactionId String
   totalPrice Float
+  createdAt DateTime @default(now())
   @@id([crystalId, transactionId])
 }
 
