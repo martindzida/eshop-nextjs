@@ -8,15 +8,15 @@ import LoadingPage from '../components/LoadingPage';
 import useGetCurrentUser from '../utils/useGetCurrentUser';
 
 const Home: NextPage = () => {
-  //FIXME: flesh of unwanted content
   const {data: session, status} = useSession();
-  let isSession = session !== null && typeof session?.user?.email === 'string';
+  const isSession: boolean = session !== null && typeof session?.user?.email === 'string';
 
   const {data, isLoading} = useGetCurrentUser(session?.user?.email, isSession);
 
-  if (status === 'authenticated' && isLoading) {
+  if (status !== 'unauthenticated' && isLoading) {
     return <LoadingPage />;
   }
+
   return (
     <div>
       <Head>

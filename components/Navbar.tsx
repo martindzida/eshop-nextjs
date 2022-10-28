@@ -26,8 +26,7 @@ const Navbar = () => {
           )}
         </div>
         <div className='flex items-center'>
-          {status !== 'authenticated' ? <SignInBtn /> : null}
-          {status === 'authenticated' ? <ProfileAvatar /> : null}
+          {status !== 'authenticated' ? <SignInBtn /> : <ProfileAvatar />}
           <div className='px-2 sm:hidden'>
             <Bars3Icon className='w-8 h-8' />
           </div>
