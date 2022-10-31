@@ -6,10 +6,9 @@ interface Props {
   image: string;
   description: string;
   price: number;
-  quantity: number;
 }
 
-const CrystalInfoPanel = ({name, image, description, price, quantity}: Props) => {
+const CrystalInfoPanel = ({name, image, description, price}: Props) => {
   return (
     <div className='flex items-center gap-16 p-20'>
       <div className='flex flex-col items-center p-10'>
@@ -25,9 +24,6 @@ const CrystalInfoPanel = ({name, image, description, price, quantity}: Props) =>
           <div className='flex items-center gap-8 p-2'>
             <span>Price: {price} €</span>
             <div></div>
-          </div>
-          <div className='p-2'>
-            <span>{quantity === 0 ? 'Out of stock' : `${quantity} left`}</span>
           </div>
         </div>
       </div>

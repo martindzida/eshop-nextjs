@@ -10,7 +10,6 @@ import useGetCurrentUser from '../utils/useGetCurrentUser';
 const Home: NextPage = () => {
   const {data: session, status} = useSession();
   const isSession: boolean = session !== null && typeof session?.user?.email === 'string';
-
   const {data, isLoading} = useGetCurrentUser(session?.user?.email, isSession);
 
   if (status !== 'unauthenticated' && isLoading) {
