@@ -5,6 +5,8 @@ import ProfileInfoPanel from '../components/ProfileInfoPanel';
 import CartItemsList from '../components/CartItemsList';
 import {useMutation} from '@tanstack/react-query';
 import axios from 'axios';
+import {useSession} from 'next-auth/react';
+import useGetCurrentUser from '../utils/useGetCurrentUser';
 
 const Checkout: NextPage = () => {
   const makeTransaction = useMutation(newTransaction => {
@@ -12,6 +14,12 @@ const Checkout: NextPage = () => {
     return axios.post('/', newTransaction);
   });
 
+  //FIXME: should be some hook of itself
+  const {data: session} = useSession();
+  const isSession: boolean = session !== null && typeof session?.user?.email === 'string';
+  const {data} = useGetCurrentUser(session?.user?.email, isSession);
+
+  //TODO: loading placeholders
   return (
     <div>
       <Head>
@@ -29,7 +37,7 @@ const Checkout: NextPage = () => {
       <section>
         <div className='flex p-16'>
           <div className='basis-1/4'>
-            <ProfileInfoPanel />
+            <ProfileInfoPanel {...data} />
           </div>
           <div className='basis-3/4'>
             <CartItemsList />
