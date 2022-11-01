@@ -49,7 +49,7 @@ const Cart: NextPage = () => {
       <div className='text-center px-10 py-16'>
         <h1 className='text-emerald-400 text-5xl font-extrabold'>Your shopping cart</h1>
       </div>
-      <CartItemsList />
+      <CartItemsList items={cartItems} />
       <CartTotalPricePanel />
       <div className='flex justify-center p-4'>
         <button
@@ -58,9 +58,9 @@ const Cart: NextPage = () => {
         >
           Empty cart
         </button>
-        <Link href='/checkout'>
+        <Link href={cartItems.length ? '/checkout' : '/crystals'}>
           <a className='bg-emerald-300 text-white text-lg font-semibold transition ease-in-out duration-200 hover:bg-emerald-400 rounded-lg p-2 m-2'>
-            Go to checkout
+            {cartItems.length ? 'Go to checkout' : 'Go to shop'}
           </a>
         </Link>
       </div>

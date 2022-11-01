@@ -7,12 +7,24 @@ import {useMutation} from '@tanstack/react-query';
 import axios from 'axios';
 import {useSession} from 'next-auth/react';
 import useGetCurrentUser from '../utils/useGetCurrentUser';
+import {Crystal} from '@prisma/client';
+import {useContext} from 'react';
+import {CartContext} from '../utils/CartContext';
+
+type TransactionType = {userId: string; products: Crystal[]};
 
 const Checkout: NextPage = () => {
-  const makeTransaction = useMutation(newTransaction => {
-    //TODO: make the endpoint
-    return axios.post('/', newTransaction);
+  //FIXME: pass context to cartitemlist, similair problem in other pages
+  const {cartItems} = useContext(CartContext);
+  const makeTransaction = useMutation((newTransaction: TransactionType) => {
+    return axios.post('/api/transactions/create', newTransaction);
   });
+
+  const handleTransaction = () => {
+    if (cartItems.length) {
+      makeTransaction.mutate({userId: data.id, products: cartItems});
+    }
+  };
 
   //FIXME: should be some hook of itself
   const {data: session} = useSession();
@@ -40,11 +52,14 @@ const Checkout: NextPage = () => {
             <ProfileInfoPanel {...data} />
           </div>
           <div className='basis-3/4'>
-            <CartItemsList />
+            <CartItemsList items={cartItems} />
           </div>
         </div>
         <div className='flex justify-center'>
-          <button className='bg-emerald-300 text-white hover:bg-emerald-400 transition ease-in-out duration-300 font-bold text-lg rounded-lg p-3'>
+          <button
+            onClick={handleTransaction}
+            className='bg-emerald-300 text-white hover:bg-emerald-400 transition ease-in-out duration-300 font-bold text-lg rounded-lg p-3'
+          >
             Make Transaction
           </button>
         </div>
