@@ -45,7 +45,7 @@ const Checkout: NextPage = () => {
         </div>
         <div className='flex justify-center'>
           <button className='bg-emerald-300 text-white hover:bg-emerald-400 transition ease-in-out duration-300 font-bold text-lg rounded-lg p-3'>
-            Confirm
+            Make Transaction
           </button>
         </div>
       </section>
