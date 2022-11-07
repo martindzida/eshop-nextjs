@@ -14,16 +14,14 @@ import {CartContext} from '../utils/CartContext';
 type TransactionType = {userId: string; products: Crystal[]};
 
 const Checkout: NextPage = () => {
-  //FIXME: pass context to cartitemlist, similair problem in other pages
   const {cartItems} = useContext(CartContext);
   const makeTransaction = useMutation((newTransaction: TransactionType) => {
     return axios.post('/api/transactions/create', newTransaction);
   });
 
   const handleTransaction = () => {
-    if (cartItems.length) {
-      makeTransaction.mutate({userId: data.id, products: cartItems});
-    }
+    //makeTransaction.mutate({userId: data.id, products: cartItems});
+    console.log('hej');
   };
 
   //FIXME: should be some hook of itself

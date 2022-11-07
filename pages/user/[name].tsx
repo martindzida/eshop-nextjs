@@ -2,6 +2,7 @@ import type {NextPage} from 'next';
 import Head from 'next/head';
 import Navbar from '../../components/Navbar';
 import {prisma} from '../../lib/prisma';
+import Image from 'next/image';
 
 const User: NextPage = ({name, email, image}: any) => {
   return (
@@ -14,6 +15,8 @@ const User: NextPage = ({name, email, image}: any) => {
       <Navbar />
       <div className='text-emerald-400 text-center px-12 pt-16'>
         <h1 className='text-5xl font-extrabold'>{name}</h1>
+        {image && <Image src={image} width={80} height={80} className='rounded-full' />}
+        <span>{email}</span>
       </div>
     </div>
   );
@@ -22,13 +25,13 @@ const User: NextPage = ({name, email, image}: any) => {
 export default User;
 
 export const getStaticProps = async ({params}: any) => {
-  const data = await prisma.user.findMany({
+  const data = await prisma.user.findFirst({
     where: {
       name: params.name,
     },
   });
-  //TODO: return array of users with the same name and then do smth
-  const user = JSON.parse(JSON.stringify(data[0]));
+
+  const user = JSON.parse(JSON.stringify(data));
   return {props: user};
 };
 

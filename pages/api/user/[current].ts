@@ -12,9 +12,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     return res.status(400);
   }
 
-  const currentUser = await prisma.user.findUnique({
+  const currentUser = await prisma.user.findFirst({
     where: {
-      email: current,
+      name: current,
     },
   });
   res.status(200).json(currentUser);
