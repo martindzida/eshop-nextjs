@@ -2,18 +2,18 @@ import {NextApiRequest, NextApiResponse} from 'next';
 import {prisma} from '../../../lib/prisma';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
-  if (req.method !== 'POST') {
+  if (req.method !== 'PUT') {
     return res.status(405);
   }
 
-  const {userId, products} = req.body;
+  const {userId, amount} = req.body;
 
-  const transaction = await prisma.transaction.create({
+  const user = await prisma.user.update({
+    where: {
+      id: userId,
+    },
     data: {
-      userId: userId,
-      products: {
-        create: [],
-      },
+      balance: amount,
     },
   });
   res.status(200).json({message: 'Success'});

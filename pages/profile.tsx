@@ -3,8 +3,24 @@ import Head from 'next/head';
 import Navbar from '../components/Navbar';
 import TransactionItem from '../components/TransactionItem';
 import ProfileInfoPanel from '../components/ProfileInfoPanel';
+import {useSession} from 'next-auth/react';
+import useGetCurrentUser from '../utils/useGetCurrentUser';
+import {useMutation} from '@tanstack/react-query';
+import axios from 'axios';
 
 const Profile: NextPage = () => {
+  const {data: session} = useSession();
+  const isSession: boolean = session !== null && typeof session?.user?.email === 'string';
+  const {data} = useGetCurrentUser(session?.user?.name, isSession);
+
+  const deposit = useMutation((newBalance: number) => {
+    return axios.put('/api/user/deposit', {userId: data.id, amount: newBalance});
+  });
+
+  const handleDeposit = (b: number) => {
+    deposit.mutate(b);
+  };
+
   return (
     <div>
       <Head>
@@ -17,7 +33,10 @@ const Profile: NextPage = () => {
         <div className='flex justify-around items-around p-32 gap-10'>
           <div className='basis-1/3 bg-emerald-400 p-16 rounded-xl'>
             <h1 className='text-white text-4xl font-extrabold p-4'>Profile Info</h1>
-            {/*<ProfileInfoPanel {...data} /> */}
+            <ProfileInfoPanel {...data} />
+            <button className='bg-white text-emerald-400 text-center font-bold rounded-lg p-2 m-2' onClick={() => handleDeposit(10)}>
+              Add funds
+            </button>
           </div>
           <div className='basis-2/3 flex flex-col items-center bg-emerald-400 rounded-xl p-16'>
             <h2 className='text-white text-4xl font-extrabold p-4'>Latest Transactions</h2>

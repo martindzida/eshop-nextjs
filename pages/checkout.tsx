@@ -20,7 +20,8 @@ const Checkout: NextPage = () => {
   });
 
   const handleTransaction = () => {
-    makeTransaction.mutate({userId: data.id, products: cartItems});
+    //makeTransaction.mutate({userId: data.id, products: cartItems});
+    //FIXME: cartItems contains quantity!
     console.log('hej');
   };
 
