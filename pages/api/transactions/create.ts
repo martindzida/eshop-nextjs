@@ -12,14 +12,12 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     data: {
       userId: userId,
       products: {
-        create: [
-          {
-            createdAt: new Date(),
-            crystal: {
-              connect: products,
-            },
+        create: {
+          createdAt: new Date(),
+          crystal: {
+            connect: products,
           },
-        ],
+        },
       },
     },
   });

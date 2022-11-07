@@ -20,14 +20,14 @@ const Checkout: NextPage = () => {
   });
 
   const handleTransaction = () => {
-    //makeTransaction.mutate({userId: data.id, products: cartItems});
+    makeTransaction.mutate({userId: data.id, products: cartItems});
     console.log('hej');
   };
 
   //FIXME: should be some hook of itself
   const {data: session} = useSession();
   const isSession: boolean = session !== null && typeof session?.user?.email === 'string';
-  const {data} = useGetCurrentUser(session?.user?.email, isSession);
+  const {data} = useGetCurrentUser(session?.user?.name, isSession);
 
   //TODO: loading placeholders
   return (
